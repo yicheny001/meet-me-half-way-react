@@ -1,4 +1,5 @@
 # README
+WORK IN PROGRESS
 This is a project completed at Flatiron School by two students, Lee Araneta and Yichen Yang, of Web Development June 2016 cohort.
 
 ##Meet Me Halfway
