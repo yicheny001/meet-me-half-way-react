@@ -10,7 +10,7 @@ Enter you and your friends' addresses (up to 10) to find out where to hangout ar
 * Redux
 * Express.js
 * Yelp API
-* GoogleMaps
+* GoogleMaps API
 
 ##Collaborators
 [Yichen Yang](https://github.com/yicheny001/) | ichenyy0701@gmail.com
