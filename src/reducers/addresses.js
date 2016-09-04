@@ -1,5 +1,5 @@
-export default function addressReducer(state = [], action){
-  switch(action.type){
+export default function addresses(state = [], action) {
+  switch(action.type) {
     case 'ADD_ADDRESS':
       if (!state.includes(action.payload)) {
         return state.concat(action.payload)
@@ -7,10 +7,10 @@ export default function addressReducer(state = [], action){
       else {
         return state
       }
-
-    case 'DELETE_ADDRESS':
+    case 'REMOVE_ADDRESS':
       var newState = [].concat(state)
-      newState.splice(state.indexOf(action.payload), 1)
+      var addressToRemove = newState.find(address => address.name = action.payload)
+      newState.splice(state.indexOf(addressToRemove), 1)
       return newState
     default:
       return state

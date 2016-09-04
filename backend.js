@@ -19,8 +19,8 @@ app.listen(3006, function () {
   console.log('Example app listening on port 3006!');
 });
 
-app.get('/heycutie/:food/:location', function (req, res) {
-  yelp.search({ term: req.params.food, location: req.params.location, sort: 2 })
+app.get('/heycutie/:food/:lat/:lng/:limit', function (req, res) {
+  yelp.search({ term: req.params.food, ll: `${req.params.lat}, ${req.params.lng}`, sort: 2, limit: req.params.limit })
   .then(function (data) {
     res.json(data);
   })

@@ -1,8 +1,12 @@
 import { combineReducers } from 'redux';
-import addressReducer from './addressReducer'
+import addresses from './addresses'
+import vendors from './vendors'
+import { reducer as form } from 'redux-form';
 
 const rootReducer = combineReducers({
-  addresses: addressReducer
+  addresses,
+  vendors,
+  form
 });
 
 export default rootReducer;

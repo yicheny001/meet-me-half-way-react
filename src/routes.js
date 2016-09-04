@@ -4,7 +4,5 @@ import EnterAddress from './components/enterAddress';
 import App from './App';
 
 export default (
-  <Route path="/" component={App}>
-    <Route path='enter_address' component={EnterAddress} />
-  </Route>
+  <Route path="/" component={App}></Route>
 );
