@@ -3,7 +3,7 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { reduxForm } from 'redux-form';
-import addVendors from '../actions/addVendors'
+import addSearch from '../actions/addSearch'
 import axios from 'axios'
 import GoogleMaps from '../modules/googleMaps'
 
@@ -25,16 +25,8 @@ class YelpForm extends Component {
   }
 
   onSubmit(props) {
-    if (this.props.addresses.length < 2) {
-      document.getElementsByClassName('error').innerHTML = 'Please enter at least two addresses.'
-    } else {
-      var {lat, lng} = GoogleMaps(this.props.addresses).center
-      var {query, numberOfResults} = props
-      axios.get(`http://localhost:3006/heycutie/${query}/${lat}/${lng}/${numberOfResults}`)
-      .then(resp => {
-        this.props.addVendors(resp.data.businesses)
-      })
-    }
+    var {query, numberOfResults} = props
+    this.props.addSearch({query, numberOfResults})
   }
 
   renderField(fieldConfig, field) {
@@ -77,7 +69,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({addVendors}, dispatch)
+  return bindActionCreators({addSearch}, dispatch)
 }
 
 var SmartYelpForm = reduxForm({

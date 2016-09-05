@@ -19,7 +19,6 @@ const EnterAddressContainer = class extends Component {
        this.props.addAddress({lat, lng, name})
     }).catch(err => {
       if (err) {
-        console.log('throww')
         console.log(err)
       }
    })
