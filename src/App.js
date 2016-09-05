@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import EnterAddressContainer from './components/enterAddressContainer'
-import YelpForm from './components/yelpForm'
-import HeaderContainer from './components/headerContainer'
-import Map from './components/map'
+import EnterAddressContainer from './containers/enterAddressContainer'
+import YelpForm from './containers/yelpForm'
+import HeaderContainer from './containers/headerContainer'
+import Map from './containers/map'
 import './App.css';
 
 const App = class extends Component {
