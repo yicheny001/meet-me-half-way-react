@@ -9,6 +9,7 @@
     "axios": "^0.14.0",
     "express": "^4.14.0",
     "lodash": "^4.15.0",
+    "number-to-words": "^1.2.3",
     "react": "^15.3.1",
     "react-dom": "^15.3.1",
     "react-redux": "^4.4.5",

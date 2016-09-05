@@ -6,6 +6,8 @@ export default function vendors(state = [], action) {
         vendor.lng = vendor.location.coordinate.longitude
       })
       return action.payload
+    case 'REMOVE_VENDORS':
+      return []
     default:
       return state
   }
