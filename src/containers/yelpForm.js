@@ -4,8 +4,6 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { reduxForm } from 'redux-form';
 import addSearch from '../actions/addSearch'
-import axios from 'axios'
-import GoogleMaps from '../modules/googleMaps'
 
 const FIELDS = {
   query: {

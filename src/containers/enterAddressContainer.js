@@ -3,7 +3,7 @@ import axios from 'axios'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import addAddress from '../actions/addAddress'
-import EnterAddress from './enterAddress'
+import EnterAddress from '../components/enterAddress'
 
 const EnterAddressContainer = class extends Component {
 
