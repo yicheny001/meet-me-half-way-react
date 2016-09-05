@@ -40,11 +40,7 @@ const GoogleMaps = (origins, destinations) => {
     markers.forEach((marker) => marker.setMap(map))
   }
 
-  var center = bounds.getCenter()
-  var lat = center.lat()
-  var lng = center.lng()
-
-  return {createMapWithBounds, center: {lat, lng}}
+  return {createMapWithBounds}
 
 }
 

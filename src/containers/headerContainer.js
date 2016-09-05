@@ -6,19 +6,27 @@ import SelectedAddresses from '../components/selectedAddresses'
 import addVendors from '../actions/addVendors'
 import removeAddress from '../actions/removeAddress'
 import Center from '../modules/center'
+import RadiusHelper from '../modules/radiusHelper'
+import Avg from '../modules/avg'
 import axios from 'axios'
 
 const HeaderContainer = class extends Component {
 
   componentDidUpdate() {
     if (this.props.addresses.length >= 2 && this.props.search.query) {
-      var {lat, lng} = Center(this.props.addresses).get()
-      var {query, numberOfResults} = this.props.search
-      axios.get(`http://localhost:3006/heycutie/${query}/${lat}/${lng}/${numberOfResults}`)
-      .then(resp => {
-        this.props.addVendors(resp.data.businesses)
-      })
+      var center = Center(this.props.addresses)
+      var { origins, destinations } = RadiusHelper(this.props.addresses, center)
+      var service = new google.maps.DistanceMatrixService();
+      service.getDistanceMatrix({origins, destinations, travelMode: 'DRIVING'}, this.callback.bind(this))
     }
+  }
+
+  callback(response, status) {
+    var arrayOfDistances = response.rows.map(datum => datum.elements[0].distance.value)
+    var radius = Avg(arrayOfDistances)/5
+    var {query, numberOfResults} = this.props.search
+    var {lat, lng} = Center(this.props.addresses)
+    this.props.addVendors({query, lat, lng, radius, numberOfResults})
   }
 
   remove(event) {

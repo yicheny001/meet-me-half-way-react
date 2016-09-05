@@ -1,4 +1,5 @@
 import React from 'react'
+import Avg from './avg'
 
 const Center = (addresses) => {
 
@@ -15,17 +16,9 @@ const Center = (addresses) => {
     return {x, y, z}
   }
 
-  var findAvg = (array) => {
-    var sum = 0
-    for (var i = 0; i < array.length; i++) {
-        sum += array[i]
-    }
-    return sum/array.length;
-  }
-
   var findAvgOfLetter = (array, letter) => {
     var arrayOfLetter = array.map(coordinate => coordinate[letter])
-    return findAvg(arrayOfLetter)
+    return Avg(arrayOfLetter)
   }
 
   var findAvgXYZ = (array) => {
@@ -46,15 +39,11 @@ const Center = (addresses) => {
     return {lat, lng}
   }
 
-  var get = () => {
-    var arrayOfRadians = addresses.map(convertToRadians)
-    var arrayOfXYZ = arrayOfRadians.map(convertToXYZ)
-    var avgXYZ = findAvgXYZ(arrayOfXYZ)
-    var latLng = convertToLatLng(avgXYZ)
-    return convertToDegrees(latLng)
-  }
-
-  return { get }
+  var arrayOfRadians = addresses.map(convertToRadians)
+  var arrayOfXYZ = arrayOfRadians.map(convertToXYZ)
+  var avgXYZ = findAvgXYZ(arrayOfXYZ)
+  var latLng = convertToLatLng(avgXYZ)
+  return convertToDegrees(latLng)
 
 }
 

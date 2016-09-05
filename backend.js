@@ -1,6 +1,6 @@
-var express = require('express');
+var express = require('express')
 var app = express();
-var Yelp = require('yelp');
+var Yelp = require('yelp')
 
 var yelp = new Yelp({
   consumer_key: '4AIXQ14932qe-duLC8923w',
@@ -10,23 +10,27 @@ var yelp = new Yelp({
 });
 
 app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.header("Access-Control-Allow-Origin", "*")
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
   next();
 });
 
 app.listen(3006, function () {
-  console.log('Example app listening on port 3006!');
+  console.log('Example app listening on port 3006!')
 });
 
-app.get('/heycutie/:food/:lat/:lng/:limit', function (req, res) {
-  yelp.search({ term: req.params.food, ll: `${req.params.lat}, ${req.params.lng}`, sort: 2, limit: req.params.limit })
+app.get('/heycutie/:food/:lat/:lng/:radius/:limit', function (req, res) {
+  var searchParams = { term: req.params.food, ll: `${req.params.lat}, ${req.params.lng}`, sort: 2, limit: req.params.limit }
+  if (req.params.radius <= 40000) {
+    searchParams['radius_filter'] = req.params.radius
+  }
+  yelp.search(searchParams)
   .then(function (data) {
     res.json(data);
   })
   .catch(function (err) {
-    console.error(err);
-  });
+    console.error(err)
+  })
 });
 
 app.get('/heycutie/:businessID', function (req, res) {
@@ -36,5 +40,5 @@ app.get('/heycutie/:businessID', function (req, res) {
   })
   .catch(function (err) {
     console.error(err);
-  });
-});
+  })
+})
