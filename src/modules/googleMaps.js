@@ -1,6 +1,6 @@
 import React from 'react'
 
-const GoogleMaps = (origins, destinations) => {
+const GoogleMaps = (origins, destinations, onClick) => {
 
   var createMarker = (address) => {
     var lat = parseFloat(address.lat)
@@ -12,8 +12,13 @@ const GoogleMaps = (origins, destinations) => {
     }
     if (address.id) {
       markerProto.icon = "http://maps.google.com/mapfiles/ms/icons/green-dot.png"
+      var marker = new google.maps.Marker(markerProto)
+      marker.addListener('click', () => {
+        onClick(address)
+      })
+    } else {
+      var marker = new google.maps.Marker(markerProto)
     }
-    var marker = new google.maps.Marker(markerProto)
     return marker
   }
 

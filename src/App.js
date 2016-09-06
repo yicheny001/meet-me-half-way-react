@@ -4,6 +4,7 @@ import YelpForm from './containers/yelpForm'
 import HeaderContainer from './containers/headerContainer'
 import Map from './containers/map'
 import VendorsContainer from './containers/vendorsContainer'
+import DetailsContainer from './containers/detailsContainer'
 import './App.css';
 
 const App = class extends Component {
@@ -16,6 +17,7 @@ const App = class extends Component {
         <HeaderContainer />
         <Map />
         <VendorsContainer />
+        <DetailsContainer />
       </div>
     )
   }

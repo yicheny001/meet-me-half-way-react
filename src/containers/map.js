@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import addVendors from '../actions/addVendors'
+import addCurrentVendor from '../actions/addCurrentVendor'
 import GoogleMaps from '../modules/googleMaps'
 import axios from 'axios'
 
@@ -21,11 +22,15 @@ const Map = class extends Component {
     document.getElementById('map').style['background-color'] = ''
     if (this.props.addresses.length >= 2) {
       if (this.props.vendors.length > 0) {
-        GoogleMaps(this.props.addresses, this.props.vendors).createMapWithBounds()
+        GoogleMaps(this.props.addresses, this.props.vendors, this.handleClick.bind(this)).createMapWithBounds()
       } else {
         GoogleMaps(this.props.addresses).createMapWithBounds()
       }
     }
+  }
+
+  handleClick(vendor) {
+    this.props.addCurrentVendor(vendor)
   }
 
   render() {
@@ -39,4 +44,8 @@ function mapStateToProps(state) {
   return {addresses: state.addresses, vendors: state.vendors, search: state.search}
 }
 
-export default connect(mapStateToProps)(Map)
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({addCurrentVendor}, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Map)
