@@ -2,12 +2,13 @@ import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import Header from '../components/header.js'
-import SelectedAddresses from '../components/selectedAddresses'
+import SelectedAddress from '../components/selectedAddress'
 import addVendors from '../actions/addVendors'
 import removeAddress from '../actions/removeAddress'
 import removeVendors from '../actions/removeVendors'
+import removeDetails from '../actions/removeDetails'
 import Center from '../modules/center'
-import RadiusHelper from '../modules/radiusHelper'
+import DistanceMatrix from '../modules/distanceMatrix'
 import Avg from '../modules/avg'
 import axios from 'axios'
 
@@ -16,12 +17,11 @@ const HeaderContainer = class extends Component {
   componentDidUpdate() {
     if (this.props.addresses.length >= 2 && this.props.search.query) {
       var center = Center(this.props.addresses)
-      var { origins, destinations } = RadiusHelper(this.props.addresses, center)
-      var service = new google.maps.DistanceMatrixService();
-      service.getDistanceMatrix({origins, destinations, travelMode: 'DRIVING'}, this.callback.bind(this))
+      DistanceMatrix(this.props.addresses, center, 'DRIVING', this.callback.bind(this))
     } else {
       this.props.removeVendors()
     }
+    this.props.removeDetails()
   }
 
   callback(response, status) {
@@ -38,20 +38,21 @@ const HeaderContainer = class extends Component {
   }
 
   render() {
+    var selectedAddresses = this.props.addresses.map(address => <SelectedAddress address={address} remove={this.remove.bind(this)} />)
     if (this.props.search.query) {
       return (
         <div>
           <Header search={this.props.search}/>
-          <SelectedAddresses addresses={this.props.addresses} remove={this.remove.bind(this)}/>
+          {selectedAddresses}
         </div>
       )
     }
-    return <SelectedAddresses addresses={this.props.addresses} remove={this.remove.bind(this)}/>
+    return <div>{selectedAddresses}</div>
   }
 }
 
 function mapDispatchToProps(dispatch){
-  return bindActionCreators({addVendors, removeVendors, removeAddress}, dispatch)
+  return bindActionCreators({addVendors, removeVendors, removeAddress, removeDetails}, dispatch)
 }
 
 function mapStateToProps(state) {
