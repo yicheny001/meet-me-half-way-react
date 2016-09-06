@@ -8,7 +8,7 @@ import axios from 'axios'
 const Map = class extends Component {
 
   shouldComponentUpdate(nextProps, nextState) {
-    if (this.props.search.query) {
+    if (this.props.search.query || nextProps.search.query) {
       if (nextProps.addresses.length >= 2 && this.props.vendors === nextProps.vendors) {
         return false
       }

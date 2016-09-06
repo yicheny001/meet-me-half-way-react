@@ -5,7 +5,7 @@ const SelectedAddresses = ({addresses, remove}) => {
     return (
       <div>
         <label>{address.name}</label>
-        <button onClick={remove}>Delete this place</button>
+        <button onClick={remove}>Remove</button>
       </div>
     )
   })

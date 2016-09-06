@@ -8,23 +8,23 @@ import addSearch from '../actions/addSearch'
 const FIELDS = {
   query: {
     type: 'input',
-    label: 'What are you looking for?'
+    label: 'what are you looking for?'
   },
-  numberOfResults: {
+  limit: {
     type: 'input',
-    label: 'Number of Results'
+    label: '# of results'
   }
 };
 
 class YelpForm extends Component {
 
   componentDidMount() {
-    this.props.fields.numberOfResults.autofill(1)
+    this.props.fields.limit.autofill(1)
   }
 
   onSubmit(props) {
-    var {query, numberOfResults} = props
-    this.props.addSearch({query, numberOfResults})
+    var {query, limit} = props
+    this.props.addSearch({query, limit})
   }
 
   renderField(fieldConfig, field) {
