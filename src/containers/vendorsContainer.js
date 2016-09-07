@@ -16,7 +16,6 @@ const VendorsContainer = class extends Component {
 
   render() {
     var vendors = this.props.vendors.map((vendor,index) => {
-      debugger
       return (
         <div className='container' id={index+1}>
           <Vendor vendor={vendor} />

@@ -3,13 +3,13 @@ import axios from 'axios'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import addAddress from '../actions/addAddress'
-import EnterAddress from '../components/enterAddress'
+import Geosuggest from 'react-geosuggest';
 
 const EnterAddressContainer = class extends Component {
 
   onSubmit(event) {
     event.preventDefault()
-    var address = event.target.firstChild.value
+    var address = event.target.firstChild.firstChild.firstChild.value
     event.target.firstChild.value = ''
     axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=AIzaSyA4X16Aq4qYw7WrqcvZGzdKgeeL26E5irc`)
     .then(resp => {
@@ -26,9 +26,14 @@ const EnterAddressContainer = class extends Component {
 
   render() {
     return (
-      <div>
-        <EnterAddress onSubmit={this.onSubmit.bind(this)}/>
-      </div>
+      <form onSubmit={this.onSubmit.bind(this)}>
+      <Geosuggest
+      placeholder="Start typing!"
+      onSuggestSelect={this.onSuggestSelect}
+      onSubmit={this.onSubmit.bind(this)}
+      />
+      <button type="submit" className="btn btn-primary">Add Address</button>
+      </form>
     )
   }
 }
