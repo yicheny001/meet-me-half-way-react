@@ -8,17 +8,20 @@ import addCurrentVendor from '../actions/addCurrentVendor'
 const VendorsContainer = class extends Component {
 
   handleClick(event) {
+    event.preventDefault()
     var vendorID = event.target.dataset.id
     var vendor = this.props.vendors.find(vendor => vendor.id === vendorID)
     this.props.addCurrentVendor(vendor)
   }
 
   render() {
-    var vendors = this.props.vendors.map(vendor => {
+    var vendors = this.props.vendors.map((vendor,index) => {
+      debugger
       return (
-        <div>
+        <div className='container' id={index+1}>
           <Vendor vendor={vendor} />
           <ShowDetailsButton vendor={vendor} handleClick={this.handleClick.bind(this)} />
+          <br />
         </div>
       )
     })

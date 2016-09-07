@@ -4,6 +4,8 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { reduxForm } from 'redux-form';
 import addSearch from '../actions/addSearch'
+import { Button } from 'react-bootstrap';
+
 
 const FIELDS = {
   query: {
@@ -46,7 +48,7 @@ class YelpForm extends Component {
       <form onSubmit={handleSubmit(props => this.onSubmit(props))} >
         <div className='error'></div>
         {_.map(FIELDS, this.renderField.bind(this))}
-        <button type="submit" className="btn btn-primary">Submit</button>
+        <button type="submit" className="btn btn-primary">Find Places!</button>
       </form>
     );
   }

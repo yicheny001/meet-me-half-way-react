@@ -1,10 +1,12 @@
 import React from 'react'
+import { Button } from 'react-bootstrap';
+
 
 const EnterAddress = ({onSubmit}) => {
   return (
     <form onSubmit={onSubmit}>
       <input type='text' placeholder='Enter Address'/>
-      <input type='submit'/>
+      <button type="submit" className="btn btn-primary">Add Address</button>
     </form>
   )
 }
