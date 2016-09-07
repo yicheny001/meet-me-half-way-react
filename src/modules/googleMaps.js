@@ -10,7 +10,7 @@ const GoogleMaps = (origins, destinations, onClick) => {
       title: address.name,
       animation: google.maps.Animation.DROP
     }
-    if (address.id) {
+    if (address.id) { // if the address is a vendor, add an event listener and a green icon
       markerProto.icon = "http://maps.google.com/mapfiles/ms/icons/green-dot.png"
       var marker = new google.maps.Marker(markerProto)
       marker.addListener('click', () => {
@@ -22,10 +22,10 @@ const GoogleMaps = (origins, destinations, onClick) => {
     return marker
   }
 
-  var markers = origins.map(createMarker)
-  if (destinations) {
+  var markers = origins.map(createMarker) // always make map markers for origins
+  if (destinations) { // if there are existing vendors, make markers for those too
     var destinationMarkers = destinations.map(createMarker)
-    markers = markers.concat(destinationMarkers)
+    markers = markers.concat(destinationMarkers) // combine all markers together in a single array
   }
   var bounds = new google.maps.LatLngBounds()
   markers.forEach(marker => bounds.extend(marker.getPosition()))
