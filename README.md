@@ -14,6 +14,9 @@ Enter you and your friends' addresses (up to 10) to find out where to hangout ar
 * Express.js
 * Yelp API
 * GoogleMaps API
+* React-Geosuggest
+* Google Material Design
+
 
 ##Collaborators
 [Yichen Yang](https://github.com/yicheny001/) | ichenyy0701@gmail.com
