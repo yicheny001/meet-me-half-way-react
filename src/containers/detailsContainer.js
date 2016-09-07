@@ -48,6 +48,14 @@ const DetailsContainer = class extends Component {
       return (
         <div>
           <TravelModes handleClick={this.handleClick.bind(this)} />
+
+
+          <div id="demo-toast-example" class="mdl-js-snackbar mdl-snackbar">
+            <div class="mdl-snackbar__text"></div>
+            <button class="mdl-snackbar__action" type="button"></button>
+          </div>
+
+
           <Vendor vendor={this.props.details.currentVendor} />
           {detailsForAddresses}
         </div>

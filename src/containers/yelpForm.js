@@ -32,7 +32,7 @@ class YelpForm extends Component {
   renderField(fieldConfig, field) {
     const fieldHelper = this.props.fields[field]
     return (
-      <div className={`form-group ${fieldHelper.touched && fieldHelper.invalid ? 'has-danger' : '' }`} >
+      <div key={field} className={`form-group ${fieldHelper.touched && fieldHelper.invalid ? 'has-danger' : '' }`} >
         <label>{fieldConfig.label}</label>
         <fieldConfig.type type="text" className="form-control" {...fieldHelper} />
         <div className="text-help">

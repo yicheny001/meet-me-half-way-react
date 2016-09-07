@@ -12,6 +12,13 @@ const VendorsContainer = class extends Component {
     var vendorID = event.target.dataset.id
     var vendor = this.props.vendors.find(vendor => vendor.id === vendorID)
     this.props.addCurrentVendor(vendor)
+    this.snackBar(vendor)
+  }
+
+  snackBar(vendor){
+    var snackbarContainer = document.querySelector('#demo-toast-example');
+    var data = {message: `${vendor.name} at ${vendor.location.address}`};
+    snackbarContainer.MaterialSnackbar.showSnackbar(data);
   }
 
   render() {
@@ -19,7 +26,7 @@ const VendorsContainer = class extends Component {
       return (
         <div className='container' id={index+1}>
           <Vendor vendor={vendor} />
-          <ShowDetailsButton vendor={vendor} handleClick={this.handleClick.bind(this)} />
+          <ShowDetailsButton id="demo-show-toast" className="mdl-button mdl-js-button mdl-button--raised" vendor={vendor} handleClick={this.handleClick.bind(this)} />
           <br />
         </div>
       )
