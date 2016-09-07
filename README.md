@@ -1,7 +1,7 @@
 # README
 WORK IN PROGRESS
 
-This is a project completed at Flatiron School by two students, Lee Araneta and Yichen Yang, of Web Development June 2016 cohort.
+This is a project completed at the Flatiron School by two students, Lee Araneta and Yichen Yang, of Web Development June 2016 cohort.
 Checkout the original Ruby version [here](https://github.com/leearaneta/meet-me-halfway)!
 
 ##Meet Me Halfway
