@@ -11,6 +11,9 @@ const Map = class extends Component {
   shouldComponentUpdate(nextProps, nextState) {
     if (this.props.search.query || nextProps.search.query) {
       if (nextProps.addresses.length >= 2 && this.props.vendors === nextProps.vendors) {
+        // whenever the map is loaded, the address is added AND THEN vendors are added
+        // this means that the map has to render twice
+        // this ensures that the map doesn't rerender UNTIL new vendors are added
         return false
       }
     }

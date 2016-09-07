@@ -18,18 +18,22 @@ const HeaderContainer = class extends Component {
     if (this.props.addresses.length >= 2 && this.props.search.query) {
       var center = Center(this.props.addresses)
       DistanceMatrix(this.props.addresses, center, 'DRIVING', this.callback.bind(this))
+      // adds vendors if there are at least two inputted addresses and a query
     } else {
       this.props.removeVendors()
+      // if not, removes current vendors
     }
     this.props.removeDetails()
   }
 
   callback(response, status) {
     var arrayOfDistances = response.rows.map(datum => datum.elements[0].distance.value)
+    // returns an array that contains the distance from each address to the current destination
     var radius = Avg(arrayOfDistances)/5
     var {query, limit} = this.props.search
     var {lat, lng} = Center(this.props.addresses)
     this.props.addVendors({query, lat, lng, radius, limit})
+    // sets a radial limit as a function of the average distance
   }
 
   remove(event) {
