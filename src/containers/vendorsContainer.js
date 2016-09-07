@@ -15,9 +15,9 @@ const VendorsContainer = class extends Component {
   }
 
   render() {
-    var vendors = this.props.vendors.map((vendor,index) => {
+    var vendors = this.props.vendors.map((vendor, index) => {
       return (
-        <div className='container' id={index+1}>
+        <div className='container' id={index + 1}>
           <Vendor vendor={vendor} />
           <ShowDetailsButton vendor={vendor} handleClick={this.handleClick.bind(this)} />
           <br />
