@@ -31,7 +31,7 @@ const DetailsContainer = class extends Component {
   }
 
   handleClick(event) {
-    var travelMode = event.target.innerHTML
+    var travelMode = event.target.dataset.mode
     this.props.changeTravelMode(travelMode)
   }
 

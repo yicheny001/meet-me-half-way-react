@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import EnterAddressContainer from './containers/enterAddressContainer'
 import YelpForm from './containers/yelpForm'
 import HeaderContainer from './containers/headerContainer'
-import Map from './containers/map'
+import MapContainer from './containers/mapContainer'
 import VendorsContainer from './containers/vendorsContainer'
 import DetailsContainer from './containers/detailsContainer'
 import './App.css';
@@ -15,7 +15,7 @@ const App = class extends Component {
         <EnterAddressContainer />
         <YelpForm />
         <HeaderContainer />
-        <Map />
+        <MapContainer />
         <VendorsContainer />
         <DetailsContainer />
       </div>
