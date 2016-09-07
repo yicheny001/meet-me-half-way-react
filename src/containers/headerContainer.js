@@ -16,7 +16,6 @@ import axios from 'axios'
 const HeaderContainer = class extends Component {
 
   componentDidUpdate() {
-    debugger
     this.props.removeVendors()
     this.props.removeDetails()
     if (this.props.addresses.length >= 2 && this.props.search.query) {
