@@ -32,12 +32,12 @@ const EnterAddressContainer = class extends Component {
     return (
       <form onSubmit={this.onSubmit.bind(this)}>
       <Geosuggest
-      placeholder="Start typing!"
+      placeholder="Start typing your address!"
       onSuggestSelect={this.onSuggestSelect}
       onSubmit={this.onSubmit.bind(this)}
       country='us'
       />
-      <button type="submit" className="btn btn-primary">Add Address</button>
+      <button type="submit" className="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored"><i className="material-icons">add</i></button>
       </form>
     )
   }
