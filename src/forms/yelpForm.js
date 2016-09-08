@@ -21,7 +21,7 @@ const FIELDS = {
 class YelpForm extends Component {
 
   componentDidMount() {
-    this.props.fields.limit.autofill(1)
+    this.props.fields.limit.autofill(3)
   }
 
   onSubmit(props) {

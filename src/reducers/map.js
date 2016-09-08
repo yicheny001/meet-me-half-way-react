@@ -12,8 +12,8 @@ export default function map(state = {map: {}, markers: []}, action) {
       GoogleMaps.createAndFitBounds({markers, map})
       return {map, markers}
     case 'ADD_VENDORS':
-      var businesses = action.payload.data.businesses
-      var newMarkers = businesses.map(vendor => GoogleMaps.createAndSetMarker({address: vendor, map, onClick: action.meta}))
+      var vendors = action.vendors
+      var newMarkers = vendors.map(vendor => GoogleMaps.createAndSetMarker({address: vendor, map, onClick: action.handleClick}))
       markers = [].concat(state.markers).concat(newMarkers)
       return {map, markers}
     case 'REMOVE_ADDRESS':

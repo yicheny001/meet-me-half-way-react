@@ -1,12 +1,12 @@
 export default function vendors(state = [], action) {
   switch(action.type) {
     case 'ADD_VENDORS':
-      var businesses = action.payload.data.businesses
-      businesses.forEach(vendor => {
+      var vendors = action.vendors
+      vendors.forEach(vendor => {
         vendor.lat = vendor.location.coordinate.latitude
         vendor.lng = vendor.location.coordinate.longitude
       })
-      return businesses
+      return vendors
     case 'REMOVE_VENDORS':
       return []
     default:

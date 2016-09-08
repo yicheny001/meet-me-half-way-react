@@ -1,7 +1,7 @@
 import React from 'react'
 
-const Details = ({address, distance, time}) => {
-  return <div>{distance} / {time} away from {address.name}</div>
+const Details = ({address, length}) => {
+  return <div>{length} from {address.name}</div>
 }
 
 export default Details

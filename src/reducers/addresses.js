@@ -1,8 +1,8 @@
 export default function addresses(state = [], action) {
   switch(action.type) {
     case 'ADD_ADDRESS':
-      if (state.find(function(obj){ return obj.name === action.payload.name })==undefined) {
-        return state.concat(action.payload)
+      if (state.find( obj => obj.name === action.payload.name) === undefined) {
+        return [...state, action.payload]
       }
       else {
         return state
