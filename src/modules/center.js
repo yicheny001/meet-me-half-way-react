@@ -1,4 +1,3 @@
-import React from 'react'
 import Avg from './avg'
 
 const Center = (addresses) => {

@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import EnterAddressContainer from './containers/enterAddressContainer'
-import YelpForm from './containers/yelpForm'
+import EnterAddressForm from './forms/enterAddressForm'
+import YelpForm from './forms/yelpForm'
+import ErrorContainer from './containers/errorContainer'
 import HeaderContainer from './containers/headerContainer'
-import MapContainer from './containers/mapContainer'
+import MapAdder from './helpers/mapAdder'
+import VendorsAdder from './helpers/vendorsAdder'
 import VendorsContainer from './containers/vendorsContainer'
 import DetailsContainer from './containers/detailsContainer'
 import './App.css';
@@ -12,10 +14,13 @@ const App = class extends Component {
     return (
       <div>
         Meet Me Halfway
-        <EnterAddressContainer />
+        <EnterAddressForm />
         <YelpForm />
+        <ErrorContainer />
         <HeaderContainer />
-        <MapContainer />
+        <MapAdder />
+        <div id='map'></div>
+        <VendorsAdder />
         <VendorsContainer />
         <DetailsContainer />
       </div>

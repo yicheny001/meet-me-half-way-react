@@ -1,12 +1,10 @@
-import React from 'react'
-
 const GoogleMaps = (function() {
 
   var createMap = () => {
     document.getElementById('map').innerHTML = ""
     var map = new google.maps.Map(document.getElementById('map'), {
-      center: {lat: 0, lng: 0},
-      zoom: 10
+      center: {lat: 40.705253, lng: -74.01407},
+      zoom: 18
     })
     return map
   }

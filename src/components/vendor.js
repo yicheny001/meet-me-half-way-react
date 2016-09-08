@@ -1,6 +1,4 @@
 import React from 'react'
-import ShowDetailsButton from '../components/showDetailsButton'
-
 
 const Vendor = ({vendor}) => {
   var location = vendor.location

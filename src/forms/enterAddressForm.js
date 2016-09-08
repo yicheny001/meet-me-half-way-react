@@ -3,23 +3,27 @@ import axios from 'axios'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import addAddress from '../actions/addAddress'
+import addError from '../actions/addError'
 import Geosuggest from 'react-geosuggest';
 
-const EnterAddressContainer = class extends Component {
+const EnterAddressForm = class extends Component {
 
   onSubmit(event) {
     event.preventDefault()
-    var address = event.target.firstChild.firstChild.firstChild.value
-    event.target.firstChild.firstChild.firstChild.value = ''
+    var address = event.target.elements[0].value
+    event.target.elements[0].value = ''
+    this.makeRequest(address)
+  }
+
+  makeRequest(address) {
     axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=AIzaSyA4X16Aq4qYw7WrqcvZGzdKgeeL26E5irc`)
     .then(resp => {
        let result = resp.data.results[0]
        this.addressData(result)
     }).catch(err => {
-      if (err) {
-        console.log(err)
-      }
-   })
+      console.log(err)
+      this.props.addError(`Sorry, ${address} is not a valid address.`)
+    })
   }
 
   addressData(result){
@@ -31,20 +35,20 @@ const EnterAddressContainer = class extends Component {
   render() {
     return (
       <form onSubmit={this.onSubmit.bind(this)}>
-      <Geosuggest
-      placeholder="Start typing!"
-      onSuggestSelect={this.onSuggestSelect}
-      onSubmit={this.onSubmit.bind(this)}
-      country='us'
-      />
-      <button type="submit" className="btn btn-primary">Add Address</button>
+        <Geosuggest
+        placeholder="Start typing!"
+        onSuggestSelect={this.onSuggestSelect}
+        onSubmit={this.onSubmit.bind(this)}
+        country='us'
+        />
+        <button type="submit" className="btn btn-primary">Add Address</button>
       </form>
     )
   }
 }
 
 function mapDispatchToProps(dispatch){
-  return bindActionCreators({addAddress}, dispatch)
+  return bindActionCreators({addAddress, addError}, dispatch)
 }
 
-export default connect(null, mapDispatchToProps)(EnterAddressContainer)
+export default connect(null, mapDispatchToProps)(EnterAddressForm)

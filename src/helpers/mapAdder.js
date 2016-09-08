@@ -3,9 +3,8 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import GoogleMaps from '../modules/googleMaps'
 import addMap from '../actions/addMap'
-import axios from 'axios'
 
-const Map = class extends Component {
+const MapAdder = class extends Component {
 
   componentDidMount() {
     var map = GoogleMaps.createMap()
@@ -13,7 +12,7 @@ const Map = class extends Component {
   }
 
   render() {
-    return <div id='map'></div>
+    return null
   }
 }
 
@@ -21,4 +20,4 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({addMap}, dispatch)
 }
 
-export default connect(null, mapDispatchToProps)(Map)
+export default connect(null, mapDispatchToProps)(MapAdder)

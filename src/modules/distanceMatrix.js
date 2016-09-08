@@ -1,6 +1,4 @@
-import React from 'react'
-
-const distanceMatrix = (addresses, destination, travelMode, callback) => {
+const DistanceMatrix = (addresses, destination, travelMode, callback) => {
   var origins = addresses.map(address => new google.maps.LatLng(address.lat, address.lng))
   var destinations = [new google.maps.LatLng(destination.lat, destination.lng)]
   var service = new google.maps.DistanceMatrixService()
@@ -13,4 +11,4 @@ const distanceMatrix = (addresses, destination, travelMode, callback) => {
 
 }
 
-export default distanceMatrix
+export default DistanceMatrix
