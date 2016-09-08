@@ -35,13 +35,13 @@ const EnterAddressForm = class extends Component {
   render() {
     return (
       <form onSubmit={this.onSubmit.bind(this)}>
-        <Geosuggest
-        placeholder="Start typing!"
-        onSuggestSelect={this.onSuggestSelect}
-        onSubmit={this.onSubmit.bind(this)}
-        country='us'
-        />
-        <button type="submit" className="btn btn-primary">Add Address</button>
+      <Geosuggest
+      placeholder="Start typing your address!"
+      onSuggestSelect={this.onSuggestSelect}
+      onSubmit={this.onSubmit.bind(this)}
+      country='us'
+      />
+      <button type="submit" className="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored"><i className="material-icons">add</i></button>
       </form>
     )
   }

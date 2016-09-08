@@ -48,7 +48,7 @@ class YelpForm extends Component {
       <form onSubmit={handleSubmit(props => this.onSubmit(props))} >
         <div className='error'></div>
         {_.map(FIELDS, this.renderField.bind(this))}
-        <button type="submit" className="btn btn-primary">Find Places!</button>
+        <button type="submit" className="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">Find Places!</button>
       </form>
     );
   }
