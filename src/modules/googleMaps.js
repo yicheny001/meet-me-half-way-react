@@ -4,7 +4,8 @@ const GoogleMaps = (function() {
     document.getElementById('map').innerHTML = ""
     var map = new google.maps.Map(document.getElementById('map'), {
       center: {lat: 40.705253, lng: -74.01407},
-      zoom: 18
+      zoom: 18,
+      scrollwheel: false
     })
     return map
   }
