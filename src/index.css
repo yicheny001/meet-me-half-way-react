@@ -1,7 +1,15 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: 'Roboto Mono', monospace;
+  text-align: center;
+}
+
+footer {
+  text-align: center;
+  font-family: 'Roboto Mono', monospace;
+  font-color: #ffffff;
+  background-color: #000000;
 }
 
 #map {

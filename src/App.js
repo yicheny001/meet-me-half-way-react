@@ -13,16 +13,19 @@ const App = class extends Component {
   render() {
     return (
       <div>
-        <h1>Meet Me Halfway</h1>
+        <div id='map'></div>
         <EnterAddressForm />
         <ErrorContainer />
         <HeaderContainer />
-        <div id='map'></div>
         <VendorsAdder />
         <VendorsContainer />
         <DetailsContainer />
         <MapAdder />
         <YelpForm />
+        <br />
+        <footer>Meet Me Halfway (c)
+        Made by Leandro Araneta & Yichen Yang</footer>
+
       </div>
     )
   }
