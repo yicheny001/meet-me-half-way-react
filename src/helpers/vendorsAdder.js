@@ -23,6 +23,12 @@ const VendorsAdder = class extends Component {
 
   handleClick(vendor) {
     this.props.addCurrentVendor(vendor)
+    this.changeCurrentVendorCss(vendor.id)
+  }
+
+  changeCurrentVendorCss(vendorID){
+    document.getElementById(vendorID).style.backgroundColor='#ffffb3'
+    setTimeout(() => document.getElementById(vendorID).style.backgroundColor='', 1000)
   }
 
   callback(response, status) {
@@ -36,14 +42,14 @@ const VendorsAdder = class extends Component {
 
   fetchData(response) {
     var arrayOfDistances = response.rows.map(datum => datum.elements[0].distance.value)
-    var radius = Avg(arrayOfDistances)/5 // sets a radial limit as a function of the average distance
-    var {query, limit} = this.props.search
+    var radius = Avg(arrayOfDistances)/2 // sets a radial limit as a function of the average distance
+    var {query, limit, sortBy} = this.props.search
     var {lat, lng} = Center(this.props.addresses)
-    return {query, lat, lng, radius, limit}
+    return {query, lat, lng, radius, limit, sortBy}
   }
 
-  makeRequest({query, lat, lng, radius, limit}) {
-    axios.get(`http://localhost:3006/heycutie/${query}/${lat}/${lng}/${radius}/${limit}`)
+  makeRequest({query, lat, lng, radius, limit, sortBy}) {
+    axios.get(`http://localhost:3006/heycutie/${query}/${lat}/${lng}/${radius}/${limit}/${sortBy}`)
     .then(response => {
       var vendors = response.data.businesses
       this.props.addVendors({vendors, handleClick: this.handleClick.bind(this)})

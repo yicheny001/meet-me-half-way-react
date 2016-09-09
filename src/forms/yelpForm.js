@@ -1,81 +1,109 @@
-import _ from 'lodash';
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react'
+import addSearch from '../actions/addSearch'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { reduxForm } from 'redux-form';
-import addSearch from '../actions/addSearch'
-import { Button } from 'react-bootstrap';
+import { Field, reduxForm } from 'redux-form'
+import { RadioButton } from 'material-ui/RadioButton'
+import MenuItem from 'material-ui/MenuItem'
+import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import { AutoComplete as MUIAutoComplete } from 'material-ui'
+import {
+ AutoComplete,
+ Checkbox,
+ DatePicker,
+ RadioButtonGroup,
+ SelectField,
+ Slider,
+ TextField,
+ Toggle
+} from 'redux-form-material-ui'
 
 
-const FIELDS = {
-  query: {
-    type: 'input',
-    label: 'what are you looking for?'
-  },
-  limit: {
-    type: 'input',
-    label: '# of results'
+const validate = values => {
+ const errors = {}
+ const requiredFields = [ 'query', 'limit' ]
+ requiredFields.forEach(field => {
+   if (!values[ field ]) {
+     errors[ field ] = 'Required'
+   }
+ })
+ return errors
+}
+
+class Form extends Component {
+
+ onSubmit(data) {
+   event.preventDefault()
+   var {query, limit, sortBy, openNow} = data
+   this.props.addSearch({query, limit, sortBy, openNow})
+ }
+
+ getChildContext() {
+      return { muiTheme: getMuiTheme(baseTheme) };
   }
+ componentDidMount() {
+   this.refs.query           // the Field
+     .getRenderedComponent() // on Field, returns ReduxFormMaterialUITextField
+     .getRenderedComponent() // on ReduxFormMaterialUITextField, returns TextField
+     .focus()                // on TextField
+ }
+
+ render() {
+   const { handleSubmit, pristine, reset, submitting } = this.props
+   let categories= [ 'pizza','ice cream', 'beer', 'jazz bar', 'museum','vegan','vegetarian' ]
+   return (
+     <form onSubmit={handleSubmit(data => this.onSubmit(data))}>
+     <div>
+       <Field name="query"
+       component={AutoComplete}
+       filter={MUIAutoComplete.fuzzyFilter}
+       dataSource={categories}
+       hintText="Try 'Pizza' or 'Starbucks'!"
+       floatingLabelText="What are you in the mood for?"
+       ref="query"
+       withRef/>
+     </div>
+     <div>
+       <Field name="limit" component={TextField} type='number' max='10' floatingLabelText="Enter a number." floatingLabelText="How many places?"/>
+     </div>
+     <br/>
+     <div>
+       <Field name="sortBy" component={RadioButtonGroup}>
+         <RadioButton value="0" label="Best match"/>
+         <RadioButton value="1" label="By distance"/>
+         <RadioButton value="2" label="By rating"/>
+       </Field>
+     </div>
+     <br/>
+     <div>
+       <Field name="openNow" defaultToggled={false} component={Toggle} label="Open Now" labelPosition="right"/>
+     </div>
+     <br/>
+     <div>
+       <button type="submit" className="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">Find Places!</button> &nbsp;
+       <button type="button" className="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" onClick={reset}>Clear</button>
+     </div>
+   </form>
+   )
+ }
+}
+
+Form.childContextTypes = {
+    muiTheme: React.PropTypes.object.isRequired,
 };
 
-class YelpForm extends Component {
-
-  componentDidMount() {
-    this.props.fields.limit.autofill(3)
-  }
-
-  onSubmit(props) {
-    var {query, limit} = props
-    this.props.addSearch({query, limit})
-  }
-
-  renderField(fieldConfig, field) {
-    const fieldHelper = this.props.fields[field]
-    return (
-      <div key={field} className={`form-group ${fieldHelper.touched && fieldHelper.invalid ? 'has-danger' : '' }`} >
-        <label>{fieldConfig.label}</label>
-        <fieldConfig.type type="text" className="form-control" {...fieldHelper} />
-        <div className="text-help">
-          {fieldHelper.touched ? fieldHelper.error : ''}
-        </div>
-      </div>
-    );
-  }
-
-  render() {
-    const { handleSubmit } = this.props;
-    return (
-      <form onSubmit={handleSubmit(props => this.onSubmit(props))} >
-        <div className='error'></div>
-        {_.map(FIELDS, this.renderField.bind(this))}
-        <button type="submit" className="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">Find Places!</button>
-      </form>
-    );
-  }
-}
-
-function validate(values) {
-  const errors = {};
-  _.each(FIELDS, (type, field) => {
-    if (!values[field]) {
-      errors[field] = `${field} is required`;
-    }
-  });
-  return errors;
-}
-
-function mapStateToProps(state) {
-  return {addresses: state.addresses}
-}
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({addSearch}, dispatch)
 }
 
 var SmartYelpForm = reduxForm({
-  form: 'Yelp Form',
-  fields: _.keys(FIELDS),
-  validate
-})(YelpForm);
+ form: 'example',
+   initialValues: {
+     sortBy: 0
+   },
+ validate
+})(Form)
 
-export default connect(mapStateToProps, mapDispatchToProps)(SmartYelpForm)
+export default connect(null, mapDispatchToProps)(SmartYelpForm)

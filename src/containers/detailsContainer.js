@@ -34,6 +34,7 @@ const DetailsContainer = class extends Component {
       return `${element.distance.text} / ${element.duration.text} away`
     })
     this.props.addLengths(lengths)
+
   }
 
   handleClick(event) {

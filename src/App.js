@@ -13,16 +13,16 @@ const App = class extends Component {
   render() {
     return (
       <div>
-        Meet Me Halfway
+        <h1>Meet Me Halfway</h1>
         <EnterAddressForm />
-        <YelpForm />
         <ErrorContainer />
         <HeaderContainer />
-        <MapAdder />
         <div id='map'></div>
         <VendorsAdder />
         <VendorsContainer />
         <DetailsContainer />
+        <MapAdder />
+        <YelpForm />
       </div>
     )
   }
