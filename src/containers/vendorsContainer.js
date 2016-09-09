@@ -34,6 +34,8 @@ const VendorsContainer = class extends Component {
           <Vendor vendor={vendor} />
           <ShowDetailsButton id="demo-show-toast" className="mdl-button mdl-js-button mdl-button--raised" vendor={vendor} handleClick={this.handleClick.bind(this)} />
           <br />
+          <br />
+
         </div>
       )
     })

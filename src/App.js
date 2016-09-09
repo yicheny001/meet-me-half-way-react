@@ -14,15 +14,16 @@ const App = class extends Component {
     return (
       <div>
         <div id='map'></div>
-        <EnterAddressForm />
         <ErrorContainer />
         <HeaderContainer />
         <VendorsAdder />
         <VendorsContainer />
         <DetailsContainer />
         <MapAdder />
+        <div className='forms'>
+        <EnterAddressForm />
         <YelpForm />
-        <br />
+        </div>
         <footer>Meet Me Halfway (c)
         Made by Leandro Araneta & Yichen Yang</footer>
 

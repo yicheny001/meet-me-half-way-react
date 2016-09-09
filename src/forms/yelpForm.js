@@ -46,7 +46,6 @@ class Form extends Component {
    this.refs.query           // the Field
      .getRenderedComponent() // on Field, returns ReduxFormMaterialUITextField
      .getRenderedComponent() // on ReduxFormMaterialUITextField, returns TextField
-     .focus()                // on TextField
  }
 
  render() {
@@ -75,7 +74,6 @@ class Form extends Component {
          <RadioButton value="2" label="By rating"/>
        </Field>
      </div>
-     <br/>
      <div>
        <Field name="openNow" defaultToggled={false} component={Toggle} label="Open Now" labelPosition="right"/>
      </div>
