@@ -12,7 +12,7 @@ import './App.css';
 const App = class extends Component {
   render() {
     return (
-      <div>
+      <div id='allStyles'>
         <div id='map'></div>
         <ErrorContainer />
         <HeaderContainer />

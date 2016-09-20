@@ -37,6 +37,11 @@ class Form extends Component {
    event.preventDefault()
    var {query, limit, sortBy, openNow} = data
    this.props.addSearch({query, limit, sortBy, openNow})
+   this.changeCurrentVendorCss()
+ }
+
+ changeCurrentVendorCss(){
+   document.getElementById('allStyles').style.backgroundColor='#ffffb3'
  }
 
  getChildContext() {
