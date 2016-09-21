@@ -15,12 +15,12 @@ const App = class extends Component {
       <div>
       <div id="sidebar-wrapper" className='aside' >
       <img className="image" src="http://s9.postimg.org/k6a8x8hsf/Screen_Shot_2016_09_20_at_8_56_15_PM.png" />
-      <EnterAddressForm />
-      <YelpForm />
       <ErrorContainer />
+      <EnterAddressForm />
       <HeaderContainer />
-      <VendorsAdder />
+      <YelpForm />
       <VendorsContainer />
+      <VendorsAdder />
       <DetailsContainer />
       </div>
       <div >
