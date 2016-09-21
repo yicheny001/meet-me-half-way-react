@@ -13,8 +13,7 @@ const App = class extends Component {
   render() {
     return (
       <div>
-      <div id="sidebar-wrapper" className='container'>
-      <div className='forms'>
+      <div id="sidebar-wrapper" className='aside' >
       <img className="image" src="http://s9.postimg.org/k6a8x8hsf/Screen_Shot_2016_09_20_at_8_56_15_PM.png" />
       <EnterAddressForm />
       <YelpForm />
@@ -23,7 +22,6 @@ const App = class extends Component {
       <VendorsAdder />
       <VendorsContainer />
       <DetailsContainer />
-      </div>
       </div>
       <div id="page-content-wrapper" >
         <div id='map'></div>

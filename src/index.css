@@ -3,8 +3,15 @@ body {
   padding: 0;
 }
 
+.aside{
+  padding:50px;
+}
+
 input{
   width: 260px !important;
+  font-family: calibri !important;
+  font-size: 0.7em;
+  letter-spacing: 0.1em;
 }
 
 .forms {
@@ -17,10 +24,6 @@ form {
 
 label {
   width: 500px ;
-}
-
-::selection{
-  background: none !important;
 }
 
 .mdl-button {
@@ -41,13 +44,6 @@ label {
   text-align: left;
   box-shadow: 0 0 1px #ffffff !important;
   background-color: transparent;
-}
-
-footer {
-  text-align: center;
-  font-family: 'Roboto Mono', monospace;
-  font-color: #ffffff;
-  background-color: #000000;
 }
 
 #map {
@@ -106,43 +102,6 @@ footer {
     margin: 0;
     padding: 0;
     list-style: none;
-}
-
-.sidebar-nav li {
-    text-indent: 20px;
-    line-height: 40px;
-}
-
-.sidebar-nav li a {
-    display: block;
-    text-decoration: none;
-    color: #999999;
-}
-
-.sidebar-nav li a:hover {
-    text-decoration: none;
-    color: #fff;
-    background: rgba(255,255,255,0.2);
-}
-
-.sidebar-nav li a:active,
-.sidebar-nav li a:focus {
-    text-decoration: none;
-}
-
-.sidebar-nav > .sidebar-brand {
-    height: 65px;
-    font-size: 18px;
-    line-height: 60px;
-}
-
-.sidebar-nav > .sidebar-brand a {
-    color: #999999;
-}
-
-.sidebar-nav > .sidebar-brand a:hover {
-    color: #fff;
-    background: none;
 }
 
 @media(min-width:768px) {
