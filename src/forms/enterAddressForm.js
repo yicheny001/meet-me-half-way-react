@@ -35,7 +35,6 @@ const EnterAddressForm = class extends Component {
   render() {
     return (
       <form onSubmit={this.onSubmit.bind(this)}>
-
       <Geosuggest
       className='mdl-textfield mdl-js-textfield mdl-textfield--floating-label'
       placeholder="Start typing your address!"
