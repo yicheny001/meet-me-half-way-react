@@ -1,3 +1,5 @@
+
+
 body {
   margin: 0;
   padding: 0;
@@ -36,6 +38,11 @@ label {
 
 .mdl-textfield {
   padding: 0px !important;
+}
+
+.mdl-button--accent.mdl-button--accent.mdl-button--raised, .mdl-button--accent.mdl-button--accent.mdl-button--fab {
+  font-family: calibri;
+  letter-spacing: 0.1em;
 }
 
 #map {
