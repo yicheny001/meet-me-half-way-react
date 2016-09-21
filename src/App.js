@@ -23,7 +23,7 @@ const App = class extends Component {
       <VendorsContainer />
       <DetailsContainer />
       </div>
-      <div id="page-content-wrapper" >
+      <div >
         <div id='map'></div>
         <MapAdder />
         </div>
