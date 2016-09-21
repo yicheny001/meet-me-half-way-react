@@ -16,10 +16,6 @@ input{
   letter-spacing: 0.1em;
 }
 
-form {
-  height: 100px;
-}
-
 label {
   width: 500px ;
 }
