@@ -3,7 +3,7 @@ import React from 'react'
 const SelectedAddress = ({address, remove}) => {
   return (
     <div>
-      <label>{address.name}</label>
+      {address.name} &nbsp;
       <button onClick={remove}>Remove</button>
     </div>
   )

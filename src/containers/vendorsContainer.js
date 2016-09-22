@@ -30,12 +30,11 @@ const VendorsContainer = class extends Component {
   render() {
     var vendors = this.props.vendors.map((vendor, index) => {
       return (
-        <div className='container' id={index + 1}>
+        <div className='vendor-container' id={index + 1}>
           <Vendor vendor={vendor} />
           <ShowDetailsButton id="demo-show-toast" className="mdl-button mdl-js-button mdl-button--raised" vendor={vendor} handleClick={this.handleClick.bind(this)} />
           <br />
           <br />
-
         </div>
       )
     })

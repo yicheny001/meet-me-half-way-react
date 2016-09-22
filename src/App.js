@@ -14,18 +14,18 @@ const App = class extends Component {
     return (
       <div>
       <div id="sidebar-wrapper" className='aside' >
-      <img className="image" src="http://s9.postimg.org/k6a8x8hsf/Screen_Shot_2016_09_20_at_8_56_15_PM.png" />
-      <ErrorContainer />
-      <EnterAddressForm />
-      <HeaderContainer />
-      <YelpForm />
-      <VendorsContainer />
-      <VendorsAdder />
-      <DetailsContainer />
+        <img className="image" src="http://s9.postimg.org/k6a8x8hsf/Screen_Shot_2016_09_20_at_8_56_15_PM.png" />
+        <ErrorContainer />
+        <EnterAddressForm />
+        <HeaderContainer />
+        <YelpForm />
+        <VendorsContainer />
+        <VendorsAdder />
       </div>
       <div id='page-content-wrapper'>
         <div id='map'></div>
         <MapAdder />
+        <DetailsContainer />
         </div>
       </div>
     )
