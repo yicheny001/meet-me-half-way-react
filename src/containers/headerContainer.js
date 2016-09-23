@@ -16,7 +16,7 @@ const HeaderContainer = class extends Component {
 
   remove(event) {
     event.preventDefault()
-    this.props.removeAddress(event.target.previousSibling.innerHTML)
+    this.props.removeAddress(event.target.parentElement.parentElement.firstChild.innerHTML)
   }
 
   render() {

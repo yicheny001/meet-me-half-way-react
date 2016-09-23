@@ -65,7 +65,7 @@ class Form extends Component {
        withRef/>
      </div>
      <div>
-       <Field name="limit" component={TextField} type='number' max='10' floatingLabelText="Enter a number." floatingLabelText="How many places?"/>
+       <Field name="limit" component={TextField} type='number' min='0' max='20' floatingLabelText="Enter a number." floatingLabelText="How many places?"/>
      </div>
      <br/>
      <div>
@@ -74,9 +74,6 @@ class Form extends Component {
          <RadioButton value="1" label="By distance"/>
          <RadioButton value="2" label="By rating"/>
        </Field>
-     </div>
-     <div>
-       <Field name="openNow" defaultToggled={false} component={Toggle} label="Open Now" labelPosition="right"/>
      </div>
      <br/>
      <div className='buttons'>
