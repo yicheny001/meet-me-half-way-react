@@ -59,17 +59,18 @@ class Form extends Component {
    return (
      <form onSubmit={handleSubmit(data => this.onSubmit(data))}>
      <div>
-       <Field name="query"
-       component={AutoComplete}
+       <Field
+       name="query"
+       component={TextField}
        filter={MUIAutoComplete.fuzzyFilter}
-       dataSource={categories}
+       openOnFocus={true}
        hintText="Try 'Pizza' or 'Starbucks'!"
        floatingLabelText="What are you in the mood for?"
        ref="query"
        withRef/>
      </div>
      <div>
-       <Field name="limit" component={TextField} type='number' max='10' floatingLabelText="Enter a number." floatingLabelText="How many places?"/>
+       <Field name="limit" component={TextField} type='number' min='0' max='20' floatingLabelText="Enter a number." floatingLabelText="How many places?"/>
      </div>
      <br/>
      <div>
@@ -78,9 +79,6 @@ class Form extends Component {
          <RadioButton value="1" label="By distance"/>
          <RadioButton value="2" label="By rating"/>
        </Field>
-     </div>
-     <div>
-       <Field name="openNow" defaultToggled={false} component={Toggle} label="Open Now" labelPosition="right"/>
      </div>
      <br/>
      <div>

@@ -16,8 +16,13 @@ input{
   letter-spacing: 0.1em;
 }
 
+.capCalibri{
+  font-family: calibri !important;
+}
+
 label {
   width: 500px ;
+  font-size: 12px ;
 }
 
 .mdl-button {
