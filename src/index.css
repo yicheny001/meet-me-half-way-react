@@ -1,4 +1,7 @@
-
+#start {
+  position:absolute !important;
+  z-index: 10;
+}
 
 body {
   margin: 0;
@@ -6,22 +9,21 @@ body {
 }
 
 .aside{
-  padding:50px;
+  padding:30px;
+}
+
+input, .geosuggest__suggests, .capCalibri{
+  width: 100% !important;
+  font-family: calibri !important;
 }
 
 input{
-  width: 100% !important;
-  font-family: calibri !important;
   font-size: 0.7em;
   letter-spacing: 0.1em;
 }
 
-.capCalibri{
-  font-family: calibri !important;
-}
-
 label {
-  width: 500px ;
+  width: 85% ;
   font-size: 12px ;
 }
 
@@ -46,10 +48,18 @@ label {
   letter-spacing: 0.1em;
 }
 
+.credit {
+  position: relative;
+  bottom: 0;
+  right: 0;
+  z-index: 2;
+}
+
 #map {
-  position: fixed;
-    width: 100%;
-    height: 700px;
+  position: fixed !important;
+  width: 100%;
+  height: 700px;
+  z-index: 1;
 }
 #wrapper {
     padding-left: 0;
@@ -59,12 +69,16 @@ label {
     transition: all 0.5s ease;
 }
 
+svg {
+  margin-right: 0px !important;
+}
+
 #sidebar-wrapper {
     z-index: 1000;
     position: fixed;
     height: 100%;
     overflow-y: auto;
-    background: #fff;
+    background: transparent;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
@@ -150,7 +164,7 @@ label {
 
 .geosuggest {
   position: relative;
-  width: 70%;
+  width: 85%;
   text-align: left;
 }
 .geosuggest__input {
@@ -158,7 +172,7 @@ label {
   background-color: transparent;
   width: 100%;
   border: none;
-  padding: .5em 1em;
+  border-bottom: 0.5px solid #E0E0E0;
   -webkit-transition: border 0.2s, box-shadow 0.2s;
           transition: border 0.2s, box-shadow 0.2s;
 }
@@ -168,6 +182,9 @@ input:focus {
 }
 
 .geosuggest__suggests {
+  font-family: calibri !important;
+  font-size: 0.7em;
+  letter-spacing: 0.1em;
   position: absolute;
   top: 100%;
   left: 0;
@@ -186,6 +203,7 @@ input:focus {
           transition: max-height 0.2s, border 0.2s;
 }
 .geosuggest__suggests--hidden {
+  letter-spacing: 0.1em;
   max-height: 0;
   overflow: hidden;
   border-width: 0;

@@ -6,7 +6,7 @@ const Header = ({search}) => {
   if (search.limit === 1) {
     term = 'place'
   }
-  return <div>{converter.toWords(search.limit)} {term} for {search.query} between:</div>
+  return <div className='capCalibri'>{converter.toWords(search.limit)} {term} for {search.query} between:</div>
 }
 
 export default Header

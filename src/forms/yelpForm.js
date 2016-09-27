@@ -20,6 +20,12 @@ import {
 } from 'redux-form-material-ui'
 
 
+function scrollTo() {
+  $('html, body').animate({
+    scrollTop: $("#artistInfo").offset().top -30
+  }, 1000);
+}
+
 const validate = values => {
  const errors = {}
  const requiredFields = [ 'query', 'limit' ]
@@ -59,11 +65,11 @@ class Form extends Component {
    return (
      <form onSubmit={handleSubmit(data => this.onSubmit(data))}>
      <div>
+
        <Field
        name="query"
        component={TextField}
        filter={MUIAutoComplete.fuzzyFilter}
-       openOnFocus={true}
        hintText="Try 'Pizza' or 'Starbucks'!"
        floatingLabelText="What are you in the mood for?"
        ref="query"

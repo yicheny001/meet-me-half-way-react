@@ -20,7 +20,7 @@ const HeaderContainer = class extends Component {
   }
 
   render() {
-    var selectedAddresses = this.props.addresses.map(address => <SelectedAddress address={address} remove={this.remove.bind(this)} />)
+    var selectedAddresses = this.props.addresses.map((address,index) => <SelectedAddress address={address} remove={this.remove.bind(this)} key={index}/>)
     if (this.props.search.query) {
       return (
         <div>

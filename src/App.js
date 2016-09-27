@@ -1,33 +1,38 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+import getMuiTheme from 'material-ui/styles/getMuiTheme'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import EnterAddressForm from './forms/enterAddressForm'
 import YelpForm from './forms/yelpForm'
 import ErrorContainer from './containers/errorContainer'
 import HeaderContainer from './containers/headerContainer'
+import DrawerSimpleExample from './containers/drawerContainer'
 import MapAdder from './helpers/mapAdder'
 import VendorsAdder from './helpers/vendorsAdder'
 import VendorsContainer from './containers/vendorsContainer'
 import DetailsContainer from './containers/detailsContainer'
 import logo from './logo.png'
+import Credit from './components/credit'
+import {blue500} from 'material-ui/styles/colors';
+
+const muiTheme = getMuiTheme({
+  palette: {
+    textColor: blue500,
+  }
+});
+
 
 const App = class extends Component {
   render() {
     return (
+      <MuiThemeProvider muiTheme={muiTheme}>
       <div>
-      <div id="sidebar-wrapper" className='aside' >
-      <img className="image" src="http://s9.postimg.org/k6a8x8hsf/Screen_Shot_2016_09_20_at_8_56_15_PM.png" />
-      <ErrorContainer />
-      <EnterAddressForm />
-      <HeaderContainer />
-      <YelpForm />
-      <VendorsContainer />
-      <VendorsAdder />
-      <DetailsContainer />
-      </div>
-      <div id='page-content-wrapper'>
-        <div id='map'></div>
-        <MapAdder />
+        <DrawerSimpleExample/>
+        <div className='col-md-9'>
+          <div id='map'></div>
+          <MapAdder />
         </div>
       </div>
+      </MuiThemeProvider>
     )
   }
 }

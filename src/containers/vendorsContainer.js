@@ -1,9 +1,16 @@
 import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
+import Star from 'material-ui/svg-icons/toggle/star';
 import Vendor from '../components/vendor'
 import ShowDetailsButton from '../components/showDetailsButton'
 import addCurrentVendor from '../actions/addCurrentVendor'
+import DetailsContainer from './detailsContainer'
+import {red500, yellow500, blue500} from 'material-ui/styles/colors';
+
+const iconStyles = {
+  marginRight: 24,
+};
 
 const VendorsContainer = class extends Component {
 
@@ -27,16 +34,22 @@ const VendorsContainer = class extends Component {
     snackbarContainer.MaterialSnackbar.showSnackbar(data);
   }
 
+  convertStars(rating){
+    let array = []
+      for(var i=0; i < rating; i++){
+          array.push(<Star style={iconStyles} color={yellow500}/>)
+      }
+    return array
+  }
+
   render() {
     var vendors = this.props.vendors.map((vendor, index) => {
       return (
-        <div className='container' id={index + 1}>
-          <Vendor vendor={vendor} />
+        <li className='list-group-item' id={index + 1}>
+          <Vendor vendor={vendor} convertStars={(rating)=>this.convertStars(rating)} />
           <ShowDetailsButton id="demo-show-toast" className="mdl-button mdl-js-button mdl-button--raised" vendor={vendor} handleClick={this.handleClick.bind(this)} />
-          <br />
-          <br />
-
-        </div>
+          <DetailsContainer />
+        </li>
       )
     })
     return <div>{vendors}</div>
