@@ -27,11 +27,9 @@ const App = class extends Component {
       <MuiThemeProvider muiTheme={muiTheme}>
       <div>
         <DrawerSimpleExample/>
-      <div id='page-content-wrapper'>
         <div id='map'></div>
         <MapAdder />
         <DetailsContainer />
-        </div>
         </div>
       </MuiThemeProvider>
     )
