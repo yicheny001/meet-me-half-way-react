@@ -27,11 +27,12 @@ const App = class extends Component {
       <MuiThemeProvider muiTheme={muiTheme}>
       <div>
         <DrawerSimpleExample/>
-        <div className='col-md-9'>
-          <div id='map'></div>
-          <MapAdder />
+      <div id='page-content-wrapper'>
+        <div id='map'></div>
+        <MapAdder />
+        <DetailsContainer />
         </div>
-      </div>
+        </div>
       </MuiThemeProvider>
     )
   }

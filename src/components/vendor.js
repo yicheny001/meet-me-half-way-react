@@ -12,7 +12,7 @@ const Vendor = ({vendor, convertStars}) => {
   var rating = vendor.rating
 
   return (
-    <div id={vendor.id}>
+    <div>
       <div><a href={vendor.url} target='_blank'>{vendor.name}</a></div>
       <div>{convertStars(rating)} with {vendor.review_count} reviews</div>
       <div>{location.address[0]}</div>

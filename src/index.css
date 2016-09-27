@@ -6,6 +6,7 @@
 body {
   margin: 0;
   padding: 0;
+  font-family: 'calibri';
 }
 
 .aside{
@@ -227,4 +228,22 @@ input:focus {
 .geosuggest-item--active:hover,
 .geosuggest-item--active:focus {
   background: #ccc;
+}
+
+.header {
+  font-size: 1.2em;
+  font-weight: 600;
+  margin-bottom: 1em;
+  margin-top: 1em;
+}
+
+.buttons {
+  margin-bottom: 2em;
+}
+
+.vendor-container {
+  padding-right: 15px;
+  padding-left: 0px;
+  margin-right: auto;
+  margin-left: auto;
 }

@@ -11,9 +11,7 @@ import { AutoComplete as MUIAutoComplete } from 'material-ui'
 import {
  AutoComplete,
  Checkbox,
- DatePicker,
  RadioButtonGroup,
- SelectField,
  Slider,
  TextField,
  Toggle
@@ -63,7 +61,7 @@ class Form extends Component {
    const { handleSubmit, pristine, reset, submitting } = this.props
    let categories= [ 'pizza','ice cream', 'beer', 'jazz bar', 'museum','vegan','vegetarian' ]
    return (
-     <form onSubmit={handleSubmit(data => this.onSubmit(data))}>
+     <form className='yelp-form' onSubmit={handleSubmit(data => this.onSubmit(data))}>
      <div>
 
        <Field
@@ -87,7 +85,7 @@ class Form extends Component {
        </Field>
      </div>
      <br/>
-     <div>
+     <div className='buttons'>
        <button type="submit" className="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">Find Places!</button> &nbsp;
        <button type="button" className="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" onClick={reset}>Clear</button>
      </div>
