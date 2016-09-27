@@ -29,7 +29,6 @@ const App = class extends Component {
         <DrawerSimpleExample/>
         <div id='map'></div>
         <MapAdder />
-        <DetailsContainer />
         </div>
       </MuiThemeProvider>
     )

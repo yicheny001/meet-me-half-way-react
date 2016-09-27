@@ -17,14 +17,7 @@ import {
  Toggle
 } from 'redux-form-material-ui'
 
-
-function scrollTo() {
-  $('html, body').animate({
-    scrollTop: $("#artistInfo").offset().top -30
-  }, 1000);
-}
-
-const validate = values => {
+ const validate = values => {
  const errors = {}
  const requiredFields = [ 'query', 'limit' ]
  requiredFields.forEach(field => {
