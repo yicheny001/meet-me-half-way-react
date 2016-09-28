@@ -19,13 +19,13 @@ const VendorsContainer = class extends Component {
     var vendorID = event.target.dataset.id
     var vendor = this.props.vendors.find(vendor => vendor.id === vendorID)
     this.props.addCurrentVendor(vendor)
-    // this.changeCurrentVendorCss(vendorID)
+    this.setState({
+      open: true,
+      anchorEl: event.currentTarget,
+    });
   }
 
-  // changeCurrentVendorCss(vendorID){
-  //   document.getElementById(vendorID).style.backgroundColor='#ffffb3'
-  //   setTimeout(() => document.getElementById(vendorID).style.backgroundColor='', 1000)
-  // }
+
 
   convertStars(rating){
     let array = []
@@ -37,6 +37,11 @@ const VendorsContainer = class extends Component {
 
   render() {
     var vendors = this.props.vendors.map((vendor) => {
+      if(!vendor){
+        return(
+          <div>loading...</div>
+        )
+      }
       if (vendor === this.props.details.currentVendor) {
         return (
           <li className='list-group-item' data-vendor={vendor.name}>

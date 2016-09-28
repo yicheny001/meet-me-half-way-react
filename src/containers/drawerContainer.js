@@ -1,7 +1,10 @@
 import React from 'react';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
-import RaisedButton from 'material-ui/RaisedButton';
+import FlatButton from 'material-ui/FlatButton';
+import SocialSentimentVerySatisfied from 'material-ui/svg-icons/social/sentiment-very-satisfied';
+
+
 import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
 
@@ -26,11 +29,14 @@ export default class DrawerSimpleExample extends React.Component {
   render() {
     return (
       <div>
-        <button
+        <FlatButton
           id='start'
-          label="Toggle Drawer"
+          label="Meet Me"
           onTouchTap={this.handleToggle}
-        >start</button>
+          primary={true}
+          backgroundColor="#fff"
+          icon={<SocialSentimentVerySatisfied />}
+        />
         <Drawer
         open={this.state.open} width='350'>
         <div className='aside'>

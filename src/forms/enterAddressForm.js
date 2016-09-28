@@ -42,6 +42,7 @@ const EnterAddressForm = class extends Component {
       onSubmit={this.onSubmit.bind(this)}
       country='us'
       onFocus={this.onFocus}
+      onBlur={this.onBlur}
       />
       <button type="submit" className="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored"><i className="material-icons">add</i></button>
       </form>
