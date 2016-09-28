@@ -17,7 +17,6 @@ const DetailsContainer = class extends Component {
   }
 
   componentWillUpdate(nextProps) {
-    debugger
     if (this.props.details.travelMode === nextProps.details.travelMode) {
       return false
     }
@@ -40,8 +39,7 @@ const DetailsContainer = class extends Component {
   }
 
   handleClick(event) {
-    var travelMode = event.target.dataset.mode
-    debugger
+    var travelMode = event.target.parentElement.id
     this.props.changeTravelMode(travelMode)
   }
 
