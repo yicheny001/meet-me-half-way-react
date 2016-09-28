@@ -6,6 +6,7 @@ import SelectedAddress from '../components/selectedAddress'
 import removeAddress from '../actions/removeAddress'
 import removeDetails from '../actions/removeDetails'
 import removeError from '../actions/removeError'
+import {List} from 'material-ui/List';
 
 const HeaderContainer = class extends Component {
 
@@ -16,17 +17,17 @@ const HeaderContainer = class extends Component {
 
   remove(event) {
     event.preventDefault()
-    this.props.removeAddress(event.target.parentElement.parentElement.firstChild.innerHTML)
+    this.props.removeAddress(event.target.parentElement.nextSibling.innerHTML)
   }
 
   render() {
     var selectedAddresses = this.props.addresses.map((address,index) => <SelectedAddress address={address} remove={this.remove.bind(this)} key={index}/>)
     if (this.props.search.query) {
       return (
-        <div>
+        <List>
           <Header search={this.props.search}/>
           {selectedAddresses}
-        </div>
+        </List>
       )
     }
     return <div>{selectedAddresses}</div>

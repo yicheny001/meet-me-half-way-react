@@ -8,6 +8,7 @@ import MenuItem from 'material-ui/MenuItem'
 import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import { AutoComplete as MUIAutoComplete } from 'material-ui'
+import {yellow600, blue500} from 'material-ui/styles/colors';
 import {
  AutoComplete,
  Checkbox,
@@ -16,6 +17,24 @@ import {
  TextField,
  Toggle
 } from 'redux-form-material-ui'
+
+const styles = {
+  errorStyle: {
+    color: yellow600,
+  },
+  underlineStyle: {
+    borderColor: blue500,
+  },
+  floatingLabelStyle: {
+    color: yellow600,
+  },
+  floatingLabelFocusStyle: {
+    color: blue500,
+  },
+  radio:{
+    color: blue500,
+  }
+};
 
  const validate = values => {
  const errors = {}
@@ -62,19 +81,38 @@ class Form extends Component {
        component={TextField}
        filter={MUIAutoComplete.fuzzyFilter}
        hintText="Try 'Pizza' or 'Starbucks'!"
-       floatingLabelText="What are you in the mood for?"
+       floatingLabelText="WHAT ARE YOU IN THE MOOD FOR?"
        ref="query"
-       withRef/>
+       withRef
+       hintStyle={styles.hintStyle}
+       errorStyle={styles.errorStyle}
+       underlineStyle={styles.underlineStyle}
+       underlineFocusStyle={styles.underlineFocusStyle}
+       />
      </div>
      <div>
-       <Field name="limit" component={TextField} type='number' min='0' max='20' floatingLabelText="Enter a number." floatingLabelText="How many places?"/>
+       <Field
+       name="limit"
+       component={TextField}
+       type='number' min='1' max='20'
+       hintText="Up to 20"
+       floatingLabelText="HOW MANY PLACES?"
+       hintStyle={styles.hintStyle}
+       errorStyle={styles.errorStyle}
+       underlineStyle={styles.underlineStyle}
+       underlineFocusStyle={styles.underlineFocusStyle}
+       />
      </div>
      <br/>
      <div>
        <Field name="sortBy" component={RadioButtonGroup}>
-         <RadioButton value="0" label="Best match"/>
-         <RadioButton value="1" label="By distance"/>
-         <RadioButton value="2" label="By rating"/>
+         <RadioButton
+         value="0"
+         label="BEST MATCH"
+         iconStyle={styles.radio}
+         />
+         <RadioButton value="1" label="BY DISTANCE"/>
+         <RadioButton value="2" label="BY RATING"/>
        </Field>
      </div>
      <br/>

@@ -3,6 +3,7 @@ import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 import FlatButton from 'material-ui/FlatButton';
 import SocialSentimentVerySatisfied from 'material-ui/svg-icons/social/sentiment-very-satisfied';
+import FontIcon from 'material-ui/FontIcon';
 
 
 import injectTapEventPlugin from 'react-tap-event-plugin';
@@ -16,6 +17,8 @@ import HeaderContainer from '../containers/headerContainer'
 import MapAdder from '../helpers/mapAdder'
 import VendorsAdder from '../helpers/vendorsAdder'
 import VendorsContainer from '../containers/vendorsContainer'
+
+
 
 export default class DrawerSimpleExample extends React.Component {
 
@@ -33,7 +36,7 @@ export default class DrawerSimpleExample extends React.Component {
           id='start'
           label="Meet Me"
           onTouchTap={this.handleToggle}
-          primary={true}
+          secondary={true}
           backgroundColor="#fff"
           icon={<SocialSentimentVerySatisfied />}
         />
