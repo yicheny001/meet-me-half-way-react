@@ -49,8 +49,9 @@ const VendorsAdder = class extends Component {
   }
 
   makeRequest({query, lat, lng, radius, limit, sortBy}) {
-    axios.get(`http://localhost:3006/heycutie/${query}/${lat}/${lng}/${radius}/${limit}/${sortBy}`)
+    axios.get(`http://localhost:3006/heycutie/${query}/${lat}/${lng}`)
     .then(response => {
+      debugger
       var vendors = response.data.businesses
       this.props.addVendors({vendors, handleClick: this.handleClick.bind(this)})
     })
