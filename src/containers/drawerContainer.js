@@ -13,7 +13,6 @@ import HeaderContainer from '../containers/headerContainer'
 import MapAdder from '../helpers/mapAdder'
 import VendorsAdder from '../helpers/vendorsAdder'
 import VendorsContainer from '../containers/vendorsContainer'
-import DetailsContainer from '../containers/detailsContainer'
 
 export default class DrawerSimpleExample extends React.Component {
 
@@ -42,7 +41,6 @@ export default class DrawerSimpleExample extends React.Component {
           <YelpForm />
           <VendorsContainer />
           <VendorsAdder />
-          <DetailsContainer />
         </div>
           <MenuItem
           onTouchTap={this.handleToggle}>Close</MenuItem>

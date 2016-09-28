@@ -19,20 +19,13 @@ const VendorsContainer = class extends Component {
     var vendorID = event.target.dataset.id
     var vendor = this.props.vendors.find(vendor => vendor.id === vendorID)
     this.props.addCurrentVendor(vendor)
-    this.changeCurrentVendorCss(vendorID)
-    this.snackBar(vendor)
+    // this.changeCurrentVendorCss(vendorID)
   }
 
-  changeCurrentVendorCss(vendorID){
-    document.getElementById(vendorID).style.backgroundColor='#ffffb3'
-    setTimeout(() => document.getElementById(vendorID).style.backgroundColor='', 1000)
-  }
-
-  snackBar(vendor){
-    var snackbarContainer = document.querySelector('#demo-toast-example');
-    var data = {message: `${vendor.name} at ${vendor.location.address}`};
-    snackbarContainer.MaterialSnackbar.showSnackbar(data);
-  }
+  // changeCurrentVendorCss(vendorID){
+  //   document.getElementById(vendorID).style.backgroundColor='#ffffb3'
+  //   setTimeout(() => document.getElementById(vendorID).style.backgroundColor='', 1000)
+  // }
 
   convertStars(rating){
     let array = []
@@ -43,12 +36,19 @@ const VendorsContainer = class extends Component {
   }
 
   render() {
-    var vendors = this.props.vendors.map((vendor, index) => {
+    var vendors = this.props.vendors.map((vendor) => {
+      if (vendor === this.props.details.currentVendor) {
+        return (
+          <li className='list-group-item' data-vendor={vendor.name}>
+            <Vendor vendor={vendor} convertStars={(rating) => this.convertStars(rating)} />
+            <DetailsContainer />
+          </li>
+        )
+      }
       return (
-        <li className='list-group-item' id={index + 1}>
-          <Vendor vendor={vendor} convertStars={(rating)=>this.convertStars(rating)} />
+        <li className='list-group-item' data-vendor={vendor.name}>
+          <Vendor vendor={vendor} convertStars={(rating) => this.convertStars(rating)} />
           <ShowDetailsButton id="demo-show-toast" className="mdl-button mdl-js-button mdl-button--raised" vendor={vendor} handleClick={this.handleClick.bind(this)} />
-          <DetailsContainer />
         </li>
       )
     })
@@ -61,7 +61,7 @@ function mapDispatchToProps(dispatch){
 }
 
 function mapStateToProps(state) {
-  return {addresses: state.addresses, vendors: state.vendors}
+  return {addresses: state.addresses, vendors: state.vendors, details: state.details}
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(VendorsContainer)

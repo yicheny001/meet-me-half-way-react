@@ -10,7 +10,6 @@ const iconStyles = {
 const Vendor = ({vendor, convertStars}) => {
   var location = vendor.location
   var rating = vendor.rating
-
   return (
     <div>
       <div><a href={vendor.url} target='_blank'>{vendor.name}</a></div>

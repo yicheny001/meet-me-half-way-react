@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import TravelModes from '../components/travelModes'
-import Vendor from '../components/vendor'
 import Details from '../components/details'
 import addLengths from '../actions/addLengths'
 import changeTravelMode from '../actions/changeTravelMode'
@@ -11,17 +10,20 @@ import DistanceMatrix from '../modules/distanceMatrix'
 
 const DetailsContainer = class extends Component {
 
-  shouldComponentUpdate(nextProps) {
-    var details = this.props.details
-    if (details.currentVendor !== nextProps.details.currentVendor || details.travelMode !== nextProps.details.travelMode) {
-      // only rerender details if currentVendor or travelMode changes
-      if (nextProps.details.currentVendor.id) {
-        // only show details if currentVendor exists
-        var {lat, lng} = nextProps.details.currentVendor
-        var destination = {lat, lng}
-        DistanceMatrix(this.props.addresses, destination, nextProps.details.travelMode, this.callback.bind(this))
-      }
+  componentWillMount() {
+    var {lat, lng} = this.props.details.currentVendor
+    var destination = {lat, lng}
+    DistanceMatrix(this.props.addresses, destination, this.props.details.travelMode, this.callback.bind(this))
+  }
+
+  componentWillUpdate(nextProps) {
+    debugger
+    if (this.props.details.travelMode === nextProps.details.travelMode) {
+      return false
     }
+    var {lat, lng} = nextProps.details.currentVendor
+    var destination = {lat, lng}
+    DistanceMatrix(this.props.addresses, destination, nextProps.details.travelMode, this.callback.bind(this))
     return true
   }
 
@@ -39,6 +41,7 @@ const DetailsContainer = class extends Component {
 
   handleClick(event) {
     var travelMode = event.target.dataset.mode
+    debugger
     this.props.changeTravelMode(travelMode)
   }
 
@@ -54,13 +57,6 @@ const DetailsContainer = class extends Component {
       return (
         <div>
           <TravelModes handleClick={this.handleClick.bind(this)} />
-
-          <div id="demo-toast-example" className="mdl-js-snackbar mdl-snackbar">
-            <div className="mdl-snackbar__text"></div>
-            <button className="mdl-snackbar__action" type="button"></button>
-          </div>
-
-          <Vendor vendor={this.props.details.currentVendor} />
           {detailsForAddresses}
         </div>
       )
