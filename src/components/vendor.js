@@ -6,20 +6,21 @@ const iconStyles = {
   marginRight: 24,
 };
 
-function numberWithCommas(x) {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-}
+// function numberWithCommas(x) {
+//     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+// }
 
 const Vendor = ({vendor, convertStars}) => {
+  debugger
   var location = vendor.location
   var rating = vendor.rating
   return (
     <div>
       <div><a href={vendor.url} target='_blank'>{vendor.name}</a></div>
-      <div>{convertStars(rating)} with {numberWithCommas(vendor.review_count)} reviews</div>
-      <div>{location.address[0]}</div>
-      <div>{location.city}, {location['state_code']} {location['postal_code']}</div>
-      <div>{vendor['display_phone']}</div>
+      <div>{convertStars(rating)} with {vendor.ratingSignals} reviews</div>
+      <div>{location.address}</div>
+      <div>{location.city}, {location.state} {location.postalCode}</div>
+      <div>{vendor.contact.formattedPhone}</div>
     </div>
   )
 }

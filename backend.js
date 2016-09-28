@@ -1,6 +1,14 @@
+var axios = require('axios')
+var CircularJSON = require('circular-json')
 var express = require('express')
 var app = express();
 var Yelp = require('yelp')
+
+// Client ID
+// BHEG2XXZ2ZHKVQQAT1ZOJTF1GZX2VF1HLDNPWWBZJLDNMUDN
+//
+// Client Secret
+// 4MOFLTHLVYDX1BZCMRPD2250EAZWIPBXQJT5ZREZANUGWGSJ
 
 var yelp = new Yelp({
   consumer_key: '4AIXQ14932qe-duLC8923w',
@@ -19,14 +27,15 @@ app.listen(3006, function () {
   console.log('Example app listening on port 3006!')
 });
 
-app.get('/heycutie/:food/:lat/:lng/:radius/:limit/:sortBy', function (req, res) {
-  var searchParams = { term: req.params.food, ll: `${req.params.lat}, ${req.params.lng}`, sort: req.params.sortBy, limit: req.params.limit }
-  if (req.params.radius <= 40000) {
-    searchParams['radius_filter'] = req.params.radius
-  }
-  yelp.search(searchParams)
+app.get('/heycutie/:query/:lat/:lng/:radius/:limit/:sortBy', function (req, res) {
+  var query = req.params.query
+  var ll = `${req.params.lat},${req.params.lng}`
+  var sort = req.params.sortBy
+  var limit = req.params.limit
+  axios.get(`https://api.foursquare.com/v2/venues/explore?client_id=BHEG2XXZ2ZHKVQQAT1ZOJTF1GZX2VF1HLDNPWWBZJLDNMUDN&client_secret=4MOFLTHLVYDX1BZCMRPD2250EAZWIPBXQJT5ZREZANUGWGSJ&v=20130815&ll=${ll}&query=${query}&limit=${limit}`)
   .then(function (data) {
-    res.json(data);
+    var stringifiedData = CircularJSON.stringify(data)
+    res.json(stringifiedData);
   })
   .catch(function (err) {
     console.error(err)
@@ -36,6 +45,7 @@ app.get('/heycutie/:food/:lat/:lng/:radius/:limit/:sortBy', function (req, res) 
 app.get('/heycutie/:businessID', function (req, res) {
   yelp.business(req.params.businessID)
   .then(function (data) {
+    console.log(data)
     res.json(data)
   })
   .catch(function (err) {

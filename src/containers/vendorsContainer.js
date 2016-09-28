@@ -25,11 +25,9 @@ const VendorsContainer = class extends Component {
     });
   }
 
-
-
   convertStars(rating){
     let array = []
-      for(var i=0; i < rating; i++){
+      for(var i = 0; i < (rating/2); i++){
           array.push(<Star style={iconStyles} color={yellow500}/>)
       }
     return array

@@ -58,7 +58,8 @@ const VendorsAdder = class extends Component {
   makeRequest({query, lat, lng, radius, limit, sortBy}) {
     axios.get(`http://localhost:3006/heycutie/${query}/${lat}/${lng}/${radius}/${limit}/${sortBy}`)
     .then(response => {
-      var vendors = response.data.businesses
+      var parsedData = JSON.parse(response.data)
+      var vendors = parsedData.data.response.groups[0].items.map(item => item.venue)
       this.props.addVendors({vendors, handleClick: this.handleClick.bind(this)})
     })
   }
