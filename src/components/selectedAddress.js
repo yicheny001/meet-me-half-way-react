@@ -4,7 +4,8 @@ import {yellow600} from 'material-ui/styles/colors';
 import ActionDelete from 'material-ui/svg-icons/action/delete';
 
 const styles = {
-    padding: '2px 30px 2px 2px',
+  li: {padding: '2px 30px 2px 2px'},
+  button: {margin: '0px'}
 };
 
 const SelectedAddress = ({address, remove}) => {
@@ -12,9 +13,9 @@ const SelectedAddress = ({address, remove}) => {
      <ListItem
      className='capCalibri'
      insetChildren={false}
-     innerDivStyle={styles}
+     innerDivStyle={styles.li}
      primaryText={address.name}
-     rightIcon={<ActionDelete color={yellow600} onClick={remove} />}
+     rightIcon={<ActionDelete style={styles.button} color={yellow600} onClick={remove} />}
      />
   )
 }

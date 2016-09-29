@@ -6,13 +6,18 @@ import addAddress from '../actions/addAddress'
 import addError from '../actions/addError'
 import Geosuggest from 'react-geosuggest';
 import MapsAddLocation from 'material-ui/svg-icons/maps/add-location';
+import FlatButton from 'material-ui/FlatButton';
+
+const styles = {
+  'minWidth':'0px !important'
+}
 
 const EnterAddressForm = class extends Component {
 
   onSubmit(event) {
     event.preventDefault()
-    var address = event.target.parentElement.previousSibling.firstChild.firstChild.value
-    event.target.parentElement.previousSibling.firstChild.firstChild.value = ''
+    var address = event.target.firstChild.firstChild.firstChild.value
+    event.target.firstChild.firstChild.firstChild.value = ''
     this.makeRequest(address)
   }
 
@@ -35,7 +40,7 @@ const EnterAddressForm = class extends Component {
 
   render() {
     return (
-      <form className='address-form' >
+      <form className='address-form' onSubmit={this.onSubmit.bind(this)}>
       <Geosuggest
       className='mdl-textfield mdl-js-textfield mdl-textfield--floating-label'
       placeholder="ADDRESS"
@@ -45,7 +50,7 @@ const EnterAddressForm = class extends Component {
       onFocus={this.onFocus}
       onBlur={this.onBlur}
       />
-      <MapsAddLocation onClick={this.onSubmit.bind(this)} type="submit"/>
+      <FlatButton style={styles} type='submit' icon={<MapsAddLocation />} />
       </form>
     )
   }

@@ -5,9 +5,8 @@ import { bindActionCreators } from 'redux'
 import { Field, reduxForm } from 'redux-form'
 import { RadioButton } from 'material-ui/RadioButton'
 import MenuItem from 'material-ui/MenuItem'
-import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import { AutoComplete as MUIAutoComplete } from 'material-ui'
+import FlatButton from 'material-ui/FlatButton';
 import {yellow600, blue500} from 'material-ui/styles/colors';
 import {
  AutoComplete,
@@ -56,13 +55,7 @@ class Form extends Component {
    this.changeCurrentVendorCss()
  }
 
- changeCurrentVendorCss(){
-   document.getElementById('allStyles').style.backgroundColor='#ffffb3'
- }
 
- getChildContext() {
-      return { muiTheme: getMuiTheme(baseTheme) };
-  }
  componentDidMount() {
    this.refs.query           // the Field
      .getRenderedComponent() // on Field, returns ReduxFormMaterialUITextField
@@ -75,7 +68,6 @@ class Form extends Component {
    return (
      <form className='yelp-form' onSubmit={handleSubmit(data => this.onSubmit(data))}>
      <div>
-
        <Field
        name="query"
        component={TextField}
@@ -116,6 +108,10 @@ class Form extends Component {
        </Field>
      </div>
      <br/>
+
+     <FlatButton type='submit' label="Primary" primary={true} />
+     <FlatButton onClick={reset} label="Secondary" secondary={true} />
+
      <div className='buttons'>
        <button type="submit" className="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">Find Places!</button> &nbsp;
        <button type="button" className="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" onClick={reset}>Clear</button>
@@ -125,9 +121,6 @@ class Form extends Component {
  }
 }
 
-Form.childContextTypes = {
-    muiTheme: React.PropTypes.object.isRequired,
-};
 
 
 function mapDispatchToProps(dispatch) {

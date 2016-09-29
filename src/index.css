@@ -222,7 +222,12 @@ input:focus {
 .geosuggest-item--active {
   background: #267dc0;
   color: #fff;
+  margin-top: 6px;
 }
+.geosuggest__suggests-wrapper{
+  background-color: none !important;
+}
+
 .geosuggest-item--active:hover,
 .geosuggest-item--active:focus {
   background: #ccc;

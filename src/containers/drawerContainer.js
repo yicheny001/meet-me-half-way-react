@@ -18,7 +18,9 @@ import MapAdder from '../helpers/mapAdder'
 import VendorsAdder from '../helpers/vendorsAdder'
 import VendorsContainer from '../containers/vendorsContainer'
 
-
+const styles = {
+  backgroundColor:'#2962FF'
+}
 
 export default class DrawerSimpleExample extends React.Component {
 
@@ -41,7 +43,9 @@ export default class DrawerSimpleExample extends React.Component {
           icon={<SocialSentimentVerySatisfied />}
         />
         <Drawer
-        open={this.state.open} width='350'>
+        open={this.state.open}
+        width='350'
+        style={styles}>
         <div className='aside'>
           <img className="image" src="http://s9.postimg.org/k6a8x8hsf/Screen_Shot_2016_09_20_at_8_56_15_PM.png" />
           <ErrorContainer />
