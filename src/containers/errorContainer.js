@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import Error from '../components/error'
 
 const ErrorContainer = class extends Component {
-
   render() {
     return <Error error={this.props.error} />
   }

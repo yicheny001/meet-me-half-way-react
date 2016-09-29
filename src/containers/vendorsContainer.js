@@ -42,7 +42,7 @@ const VendorsContainer = class extends Component {
       }
       if (vendor === this.props.details.currentVendor) {
         return (
-          <li className='list-group-item' data-vendor={vendor.name}>
+          <li className='list-group-item' id={vendor.name}>
             <Vendor vendor={vendor} convertStars={(rating) => this.convertStars(rating)} />
             <DetailsContainer />
           </li>
