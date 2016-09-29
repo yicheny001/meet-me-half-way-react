@@ -23,15 +23,15 @@ const VendorsAdder = class extends Component {
 
   handleClick(vendor) {
     this.props.addCurrentVendor(vendor)
-    this.scrollTo(vendor)
+    // this.scrollTo(vendor)
   }
-
-  scrollTo(vendor) {
-    var name = vendor.name
-    $('html, body').animate({
-      scrollTop: $(`${name}`).offset().top -30
-    }, 1000)
-  }
+  
+  // scrollTo(vendor) {
+  //   var name = vendor.name
+  //   $('html, body').animate({
+  //     scrollTop: $(`${name}`).offset().top -30
+  //   }, 1000)
+  // }
 
   changeCurrentVendorCss(vendorID){
     document.getElementById(vendorID).style.backgroundColor='#ffffb3'

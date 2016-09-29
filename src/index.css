@@ -244,6 +244,10 @@ input:focus {
   margin-bottom: 2em;
 }
 
+.travel-modes {
+  margin: 5px;
+}
+
 .vendor-container {
   padding-right: 15px;
   padding-left: 0px;

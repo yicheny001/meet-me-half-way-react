@@ -11,7 +11,6 @@ const iconStyles = {
 // }
 
 const Vendor = ({vendor, convertStars}) => {
-  debugger
   var location = vendor.location
   var rating = vendor.rating
   return (

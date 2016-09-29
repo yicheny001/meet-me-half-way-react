@@ -42,7 +42,28 @@ const GoogleMaps = (function() {
     map.fitBounds(bounds)
   }
 
-  return {createMap, createAndSetMarker, createAndFitBounds}
+  var calculateAndDisplayRoute = ({origin, destination, map}) => {
+    var directionsService = new google.maps.DirectionsService
+    var directionsDisplay = new google.maps.DirectionsRenderer
+    directionsDisplay.setOptions( { suppressMarkers: true, preserveViewport: true } )
+    var route = []
+    directionsDisplay.setMap(map)
+    directionsService.route({
+      origin,
+      destination,
+      travelMode: 'DRIVING'
+    }, function(response, status) {
+      if (status === 'OK') {
+        directionsDisplay.setDirections(response)
+        route.push(directionsDisplay)
+      } else {
+        console.log(status)
+      }
+    })
+    return route
+  }
+
+  return {createMap, createAndSetMarker, createAndFitBounds, calculateAndDisplayRoute}
 
 })()
 

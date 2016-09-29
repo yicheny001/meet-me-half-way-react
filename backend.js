@@ -2,20 +2,6 @@ var axios = require('axios')
 var CircularJSON = require('circular-json')
 var express = require('express')
 var app = express();
-var Yelp = require('yelp')
-
-// Client ID
-// BHEG2XXZ2ZHKVQQAT1ZOJTF1GZX2VF1HLDNPWWBZJLDNMUDN
-//
-// Client Secret
-// 4MOFLTHLVYDX1BZCMRPD2250EAZWIPBXQJT5ZREZANUGWGSJ
-
-var yelp = new Yelp({
-  consumer_key: '4AIXQ14932qe-duLC8923w',
-  consumer_secret: 'NYO2mSLJri2TteQ6-H-vsOo457E',
-  token: 'xKvgmNwypC9LKsKc5L1bk-v-2xgDlBYn',
-  token_secret: 'Ic7fR4OiXaawmBTFtEBinrg4-GM',
-});
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*")
@@ -24,7 +10,7 @@ app.use(function(req, res, next) {
 });
 
 app.listen(3006, function () {
-  console.log('Example app listening on port 3006!')
+  console.log('welcome to meet me halfway ayy lmao')
 });
 
 app.get('/heycutie/:query/:lat/:lng/:radius/:limit/:sortBy', function (req, res) {
@@ -41,14 +27,3 @@ app.get('/heycutie/:query/:lat/:lng/:radius/:limit/:sortBy', function (req, res)
     console.error(err)
   })
 });
-
-app.get('/heycutie/:businessID', function (req, res) {
-  yelp.business(req.params.businessID)
-  .then(function (data) {
-    console.log(data)
-    res.json(data)
-  })
-  .catch(function (err) {
-    console.error(err);
-  })
-})
