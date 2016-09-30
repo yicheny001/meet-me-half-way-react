@@ -27,10 +27,8 @@ const VendorsAdder = class extends Component {
   }
 
   scrollTo(vendor) {
-    var name = vendor.name
-    $('html, body').animate({
-      scrollTop: $(`${name}`).offset().top -30
-    }, 1000)
+    debugger
+    document.getElementById(`${vendor.name}`).scrollIntoView()
   }
 
   changeCurrentVendorCss(vendorID){

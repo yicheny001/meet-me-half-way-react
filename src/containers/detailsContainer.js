@@ -7,23 +7,22 @@ import addLengths from '../actions/addLengths'
 import changeTravelMode from '../actions/changeTravelMode'
 import addError from '../actions/addError'
 import DistanceMatrix from '../modules/distanceMatrix'
-import Popover from 'material-ui/Popover';
 
 const DetailsContainer = class extends Component {
 
   constructor(props) {
-   super(props);
+    super(props);
 
-   this.state = {
-     open: false,
-   };
- }
+    this.state = {
+      open: false,
+    };
+  }
 
   handleRequestClose = () => {
-   this.setState({
-     open: false,
-   });
- };
+    this.setState({
+      open: false,
+    });
+  };
 
   componentWillMount() {
     var {lat, lng} = this.props.details.currentVendor
@@ -55,6 +54,7 @@ const DetailsContainer = class extends Component {
 
   handleClick(event) {
     var travelMode = event.target.parentElement.id
+    debugger
     this.props.changeTravelMode(travelMode)
   }
 
@@ -86,16 +86,8 @@ const DetailsContainer = class extends Component {
       }
       return (
         <div>
-        {/* <Popover
-          open={this.state.open}
-          anchorEl={this.state.anchorEl}
-          anchorOrigin={{horizontal: 'left', vertical: 'bottom'}}
-          targetOrigin={{horizontal: 'left', vertical: 'top'}}
-          onRequestClose={this.handleRequestClose}
-        > */}
           <TravelModes handleClick={this.handleClick.bind(this)} />
           {detailsForAddresses}
-          {/* </Popover> */}
         </div>
       )
     } else {
