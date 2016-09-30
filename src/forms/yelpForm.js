@@ -7,7 +7,7 @@ import { RadioButton } from 'material-ui/RadioButton'
 import MenuItem from 'material-ui/MenuItem'
 import { AutoComplete as MUIAutoComplete } from 'material-ui'
 import FlatButton from 'material-ui/FlatButton';
-import {yellow600, blue500} from 'material-ui/styles/colors';
+import {yellow600, yellow200, blue200, blue500} from 'material-ui/styles/colors';
 import {
  AutoComplete,
  Checkbox,
@@ -31,7 +31,11 @@ const styles = {
     color: blue500,
   },
   radio:{
-    color: blue500,
+    fill: yellow600,
+  },
+  label:{
+    color:'#fff',
+    letterSpacing: '0.1em'
   }
 };
 
@@ -103,19 +107,15 @@ class Form extends Component {
          label="BEST MATCH"
          iconStyle={styles.radio}
          />
-         <RadioButton value="1" label="BY DISTANCE"/>
-         <RadioButton value="2" label="BY RATING"/>
+         <RadioButton value="1" label="BY DISTANCE" iconStyle={styles.radio}/>
+         <RadioButton value="2" label="BY RATING" iconStyle={styles.radio}/>
        </Field>
      </div>
      <br/>
 
-     <FlatButton type='submit' label="Primary" primary={true} />
-     <FlatButton onClick={reset} label="Secondary" secondary={true} />
+     <FlatButton type='submit' label="FIND PLACES!" backgroundColor={blue500} labelStyle={styles.label}	hoverColor={yellow200} /> &nbsp; &nbsp; &nbsp;
+     <FlatButton onClick={reset} label="CLEAR FORM" backgroundColor={yellow600} labelStyle={styles.label}	hoverColor={blue200} />
 
-     <div className='buttons'>
-       <button type="submit" className="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">Find Places!</button> &nbsp;
-       <button type="button" className="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" onClick={reset}>Clear</button>
-     </div>
    </form>
    )
  }

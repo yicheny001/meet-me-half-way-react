@@ -38,7 +38,6 @@ export default class DrawerSimpleExample extends React.Component {
           id='start'
           label="Meet Me"
           onTouchTap={this.handleToggle}
-          secondary={true}
           backgroundColor="#fff"
           icon={<SocialSentimentVerySatisfied />}
         />
@@ -46,17 +45,17 @@ export default class DrawerSimpleExample extends React.Component {
         open={this.state.open}
         width='350'
         style={styles}>
+        <MenuItem onTouchTap={this.handleToggle}>x</MenuItem>
         <div className='aside'>
           <img className="image" src="http://s9.postimg.org/k6a8x8hsf/Screen_Shot_2016_09_20_at_8_56_15_PM.png" />
           <ErrorContainer />
           <EnterAddressForm />
           <HeaderContainer />
           <YelpForm />
+          <br/>
           <VendorsContainer />
           <VendorsAdder />
         </div>
-          <MenuItem
-          onTouchTap={this.handleToggle}>Close</MenuItem>
         </Drawer>
       </div>
     );

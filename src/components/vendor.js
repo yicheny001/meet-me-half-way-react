@@ -10,17 +10,21 @@ const iconStyles = {
 //     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 // }
 
-const Vendor = ({vendor, convertStars}) => {
+const Vendor = ({vendor, convertStars, convertPrice}) => {
   debugger
   var location = vendor.location
   var rating = vendor.rating
+  // var price = vendor.price.tier
   return (
     <div>
       <div><a href={vendor.url} target='_blank'>{vendor.name}</a></div>
       <div>{convertStars(rating)} with {vendor.ratingSignals} reviews</div>
+      {/* <div>{convertPrice(price)}</div> */}
       <div>{location.address}</div>
       <div>{location.city}, {location.state} {location.postalCode}</div>
       <div>{vendor.contact.formattedPhone}</div>
+      {/* <div>{vendor.hours.status}</div>
+      <div>{vendor.menu.url}</div> */}
     </div>
   )
 }

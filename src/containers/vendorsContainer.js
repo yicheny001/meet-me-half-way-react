@@ -33,6 +33,14 @@ const VendorsContainer = class extends Component {
     return array
   }
 
+  convertPrice(price){
+    let array = []
+      for(var i = 0; i < (price); i++){
+          array.push('$')
+      }
+    return array
+  }
+
   render() {
     var vendors = this.props.vendors.map((vendor) => {
       if(!vendor){
@@ -43,14 +51,14 @@ const VendorsContainer = class extends Component {
       if (vendor === this.props.details.currentVendor) {
         return (
           <li className='list-group-item' data-vendor={vendor.name}>
-            <Vendor vendor={vendor} convertStars={(rating) => this.convertStars(rating)} />
+            <Vendor vendor={vendor} convertStars={(rating) => this.convertStars(rating)} convertPrice={(price) => this.convertPrice(price)} />
             <DetailsContainer />
           </li>
         )
       }
       return (
         <li className='list-group-item' data-vendor={vendor.name}>
-          <Vendor vendor={vendor} convertStars={(rating) => this.convertStars(rating)} />
+          <Vendor vendor={vendor} convertStars={(rating) => this.convertStars(rating)} convertPrice={(price) => this.convertPrice(price)} />
           <ShowDetailsButton id="demo-show-toast" className="mdl-button mdl-js-button mdl-button--raised" vendor={vendor} handleClick={this.handleClick.bind(this)} />
         </li>
       )
