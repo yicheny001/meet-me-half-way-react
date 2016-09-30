@@ -6,7 +6,7 @@ import Vendor from '../components/vendor'
 import ShowDetailsButton from '../components/showDetailsButton'
 import addCurrentVendor from '../actions/addCurrentVendor'
 import DetailsContainer from './detailsContainer'
-import {red500, yellow500, blue500} from 'material-ui/styles/colors';
+import { red500, yellow500, blue500 } from 'material-ui/styles/colors';
 
 const iconStyles = {
   marginRight: 24,
@@ -16,9 +16,10 @@ const VendorsContainer = class extends Component {
 
   handleClick(event) {
     event.preventDefault()
+    var { vendors, addCurrentVendor, details } = this.props
     var vendorID = event.target.dataset.id
-    var vendor = this.props.vendors.find(vendor => vendor.id === vendorID)
-    this.props.addCurrentVendor(vendor)
+    var currentVendor = vendors.find(vendor => vendor.id === vendorID)
+    addCurrentVendor({currentVendor, travelMode: details.travelMode})
     this.setState({
       open: true,
       anchorEl: event.currentTarget,
@@ -43,7 +44,7 @@ const VendorsContainer = class extends Component {
 
   render() {
     var vendors = this.props.vendors.map((vendor) => {
-      if(!vendor){
+      if (!vendor) {
         return(
           <div>loading...</div>
         )

@@ -1,7 +1,8 @@
-function addCurrentVendor(vendor){
+function addCurrentVendor({currentVendor, travelMode}){
   return {
     type: 'ADD_CURRENT_VENDOR',
-    payload: vendor
+    currentVendor,
+    travelMode
   }
 }
 

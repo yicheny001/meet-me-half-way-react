@@ -5,17 +5,13 @@ import FlatButton from 'material-ui/FlatButton';
 import SocialSentimentVerySatisfied from 'material-ui/svg-icons/social/sentiment-very-satisfied';
 import FontIcon from 'material-ui/FontIcon';
 
-
 import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
-
 
 import EnterAddressForm from '../forms/enterAddressForm'
 import YelpForm from '../forms/yelpForm'
 import ErrorContainer from '../containers/errorContainer'
 import HeaderContainer from '../containers/headerContainer'
-import MapAdder from '../helpers/mapAdder'
-import VendorsAdder from '../helpers/vendorsAdder'
 import VendorsContainer from '../containers/vendorsContainer'
 
 const styles = {
@@ -29,7 +25,8 @@ export default class DrawerSimpleExample extends React.Component {
     this.state = {open: false};
   }
 
-  handleToggle = () => this.setState({open: !this.state.open});
+  handleToggle = () => this.setState({open: !this.state.open})
+  scrollUp = () => document.getElementsByClassName('address-form')[0].scrollIntoView()
 
   render() {
     return (
@@ -54,8 +51,9 @@ export default class DrawerSimpleExample extends React.Component {
           <YelpForm />
           <br/>
           <VendorsContainer />
-          <VendorsAdder />
         </div>
+          <MenuItem
+          onTouchTap={this.scrollUp}>Back to Top</MenuItem>
         </Drawer>
       </div>
     );

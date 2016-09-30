@@ -10,6 +10,7 @@ function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
+
 const Vendor = ({vendor, convertStars}) => {
   var location = vendor.location
   var rating = vendor.rating
