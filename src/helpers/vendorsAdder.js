@@ -12,28 +12,31 @@ import axios from 'axios'
 
 const VendorsAdder = class extends Component {
 
+  shouldComponentUpdate(nextProps) {
+    if (this.props.travelMode !== nextProps.travelMode) {
+      return false // does not update if travelMode changes
+    }
+    return true
+  }
+
   componentDidUpdate() {
-    this.props.removeVendors()
-    if (this.props.addresses.length >= 2 && this.props.search.query) {
-      var center = Center(this.props.addresses)
-      DistanceMatrix(this.props.addresses, center, 'DRIVING', this.callback.bind(this))
+    var { removeVendors, addresses, search } = this.props
+    removeVendors()
+    if (addresses.length >= 2 && search.query) {
+      var center = Center(addresses)
+      DistanceMatrix(addresses, center, 'DRIVING', this.callback.bind(this))
       // adds vendors if there are at least two inputted addresses and a query
     }
   }
 
-  handleClick(vendor) {
-    this.props.addCurrentVendor(vendor)
-    this.scrollTo(vendor)
+  handleClick(currentVendor) {
+    var { addCurrentVendor, travelMode } = this.props
+    addCurrentVendor({currentVendor, travelMode})
+    this.scrollTo(currentVendor)
   }
 
   scrollTo(vendor) {
-    debugger
     document.getElementById(`${vendor.name}`).scrollIntoView()
-  }
-
-  changeCurrentVendorCss(vendorID){
-    document.getElementById(vendorID).style.backgroundColor='#ffffb3'
-    setTimeout(() => document.getElementById(vendorID).style.backgroundColor='', 1000)
   }
 
   callback(response, status) {
@@ -48,8 +51,8 @@ const VendorsAdder = class extends Component {
   fetchData(response) {
     var arrayOfDistances = response.rows.map(datum => datum.elements[0].distance.value)
     var radius = Avg(arrayOfDistances)/2 // sets a radial limit as a function of the average distance
-    var {query, limit, sortBy} = this.props.search
-    var {lat, lng} = Center(this.props.addresses)
+    var { query, limit, sortBy } = this.props.search
+    var { lat, lng } = Center(this.props.addresses)
     return {query, lat, lng, radius, limit, sortBy}
   }
 
@@ -77,7 +80,7 @@ function mapDispatchToProps(dispatch){
 }
 
 function mapStateToProps(state) {
-  return {addresses: state.addresses, search: state.search}
+  return {addresses: state.addresses, search: state.search, travelMode: state.details.travelMode}
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(VendorsAdder)

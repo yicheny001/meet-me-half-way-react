@@ -10,20 +10,6 @@ import DistanceMatrix from '../modules/distanceMatrix'
 
 const DetailsContainer = class extends Component {
 
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      open: false,
-    };
-  }
-
-  handleRequestClose = () => {
-    this.setState({
-      open: false,
-    });
-  };
-
   componentWillMount() {
     var {lat, lng} = this.props.details.currentVendor
     var destination = {lat, lng}
@@ -53,26 +39,13 @@ const DetailsContainer = class extends Component {
   }
 
   handleClick(event) {
+    var { changeTravelMode, details: {currentVendor}} = this.props
     var travelMode = event.target.parentElement.id
-    this.props.changeTravelMode(travelMode)
+    if (travelMode === '') {
+      travelMode = event.target.id
+    }
+    this.props.changeTravelMode({travelMode, currentVendor})
   }
-
-  handleTouchTap = (event) => {
-    // This prevents ghost click.
-    event.preventDefault();
-
-    this.setState({
-      open: true,
-      anchorEl: event.currentTarget,
-    });
-  };
-
-  handleRequestClose = () => {
-   this.setState({
-     open: false,
-   });
- };
-
 
   render() {
     if (this.props.details.lengths.length > 0) {

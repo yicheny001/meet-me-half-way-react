@@ -1,7 +1,8 @@
-function changeTravelMode(travelMode){
+function changeTravelMode({travelMode, currentVendor}){
   return {
     type: 'CHANGE_TRAVEL_MODE',
-    payload: travelMode
+    travelMode,
+    currentVendor
   }
 }
 

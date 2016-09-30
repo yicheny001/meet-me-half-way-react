@@ -42,7 +42,7 @@ const GoogleMaps = (function() {
     map.fitBounds(bounds)
   }
 
-  var calculateAndDisplayRoute = ({origin, destination, map}) => {
+  var calculateAndDisplayRoute = ({origin, destination, travelMode, map}) => {
     var directionsService = new google.maps.DirectionsService
     var directionsDisplay = new google.maps.DirectionsRenderer
     directionsDisplay.setOptions( { suppressMarkers: true, preserveViewport: true } )
@@ -51,7 +51,7 @@ const GoogleMaps = (function() {
     directionsService.route({
       origin,
       destination,
-      travelMode: 'DRIVING'
+      travelMode
     }, function(response, status) {
       if (status === 'OK') {
         directionsDisplay.setDirections(response)

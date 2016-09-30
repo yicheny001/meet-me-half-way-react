@@ -2,10 +2,6 @@ import React, {Component} from 'react'
 import Star from 'material-ui/svg-icons/toggle/star';
 import {red500, yellow500, blue500} from 'material-ui/styles/colors';
 
-const iconStyles = {
-  marginRight: 24,
-};
-
 // function numberWithCommas(x) {
 //     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 // }

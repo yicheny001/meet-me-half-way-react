@@ -31,16 +31,23 @@ export default function map(state = {map: {}, markers: [], routes: []}, action) 
         markersToRemove.forEach(marker => marker.setMap(null))
         markersToRemove.forEach(marker => markers.splice(markers.indexOf(marker), 1))
       }
-      GoogleMaps.createAndFitBounds({markers, map})
-      return {map, markers, routes}
-    case 'ADD_CURRENT_VENDOR':
       if (state.routes.length > 0) {
         state.routes.forEach(route => route[0].setMap(null))
       }
+      routes = []
+      GoogleMaps.createAndFitBounds({markers, map})
+      return {map, markers, routes}
+    case 'ADD_CURRENT_VENDOR':
+    case 'CHANGE_TRAVEL_MODE':
+      if (state.routes.length > 0) {
+        state.routes.forEach(route => route[0].setMap(null))
+      }
+      var { currentVendor, travelMode } = action
       var originNames = state.markers.filter(marker => !marker.icon).map(origin => origin.title)
-      var destination = new google.maps.LatLng(action.payload.lat, action.payload.lng)
-      var routes = originNames.map(origin => GoogleMaps.calculateAndDisplayRoute({origin, destination, map}))
+      var destination = new google.maps.LatLng(currentVendor.lat, currentVendor.lng)
+      routes = originNames.map(origin => GoogleMaps.calculateAndDisplayRoute({origin, destination, travelMode, map}))
       return {map, markers: state.markers, routes}
+      break
     default:
       return state
   }
