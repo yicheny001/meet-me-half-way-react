@@ -1,7 +1,5 @@
 import React from 'react'
 import converter from 'number-to-words'
-import {List, ListItem} from 'material-ui/List';
-
 
 const Header = ({search}) => {
   var capitalize = (string) => {
@@ -12,7 +10,7 @@ const Header = ({search}) => {
     term = 'place'
   }
   return(
-    <div className='header'>{capitalize(converter.toWords(search.limit))} {term} for {search.query} between:</div>
+    <div className='header'>{term} for {search.query} between:</div>
   )
 }
 

@@ -13,6 +13,7 @@ import YelpForm from '../forms/yelpForm'
 import ErrorContainer from '../containers/errorContainer'
 import HeaderContainer from '../containers/headerContainer'
 import VendorsContainer from '../containers/vendorsContainer'
+import FiltersContainer from '../containers/filtersContainer'
 
 const styles = {
   backgroundColor:'#2962FF'
@@ -50,6 +51,7 @@ export default class DrawerSidebar extends React.Component {
           <EnterAddressForm />
           <HeaderContainer />
           <YelpForm />
+          <FiltersContainer />
           <br/>
           <div id='results'/>
           <VendorsContainer />

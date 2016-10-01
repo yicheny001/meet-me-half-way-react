@@ -1,4 +1,4 @@
-function addLengths(lengths){
+function addLengths(lengths) {
   return {
     type: 'ADD_LENGTHS',
     payload: lengths

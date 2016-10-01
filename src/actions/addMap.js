@@ -1,4 +1,4 @@
-function addMap(map){
+function addMap(map) {
   return {
     type: 'ADD_MAP',
     payload: map

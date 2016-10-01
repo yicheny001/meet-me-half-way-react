@@ -1,4 +1,4 @@
-function addCurrentVendor({currentVendor, travelMode}){
+function addCurrentVendor({currentVendor, travelMode}) {
   return {
     type: 'ADD_CURRENT_VENDOR',
     currentVendor,

@@ -1,4 +1,4 @@
-function changeTravelMode({travelMode, currentVendor}){
+function changeTravelMode({travelMode, currentVendor}) {
   return {
     type: 'CHANGE_TRAVEL_MODE',
     travelMode,

@@ -1,4 +1,4 @@
-function addAddress(address){
+function addAddress(address) {
   return {
     type: 'ADD_ADDRESS',
     payload: address

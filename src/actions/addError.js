@@ -1,4 +1,4 @@
-function addError(error){
+function addError(error) {
   return {
     type: 'ADD_ERROR',
     payload: error

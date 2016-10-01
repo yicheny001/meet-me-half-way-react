@@ -2,10 +2,6 @@ import React, {Component} from 'react'
 import Star from 'material-ui/svg-icons/toggle/star';
 import {red500, yellow500, blue500} from 'material-ui/styles/colors';
 
-const iconStyles = {
-  marginRight: 24,
-};
-
 function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
@@ -30,13 +26,12 @@ function convertPrice(vendor){
 function convertStars(rating){
   let array = []
     for(var i = 0; i < (rating/2); i++){
-        array.push(<Star style={iconStyles} color={yellow500}/>)
+        array.push(<Star color={yellow500}/>)
     }
   return array
 }
 
 const Vendor = ({vendor}) => {
-  debugger
   var location = vendor.location
   var rating = vendor.rating
   // var price = vendor.price.tier
