@@ -18,7 +18,7 @@ const styles = {
   backgroundColor:'#2962FF'
 }
 
-export default class DrawerSimpleExample extends React.Component {
+export default class DrawerSidebar extends React.Component {
 
   constructor(props) {
     super(props);
@@ -26,7 +26,7 @@ export default class DrawerSimpleExample extends React.Component {
   }
 
   handleToggle = () => this.setState({open: !this.state.open})
-  
+
   scrollUp = () => document.getElementsByClassName('address-form')[0].scrollIntoView()
 
   render() {
