@@ -10,8 +10,32 @@ function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
+function openNow(vendor){
+  if(vendor.hours){
+    return <div>{vendor.hours.status}</div>
+  }
+}
 
-const Vendor = ({vendor, convertStars}) => {
+function convertPrice(vendor){
+  if(vendor.price){
+    let price = vendor.price.tier
+    let array = []
+      for(var i = 0; i < (price); i++){
+          array.push('$')
+      }
+    return array
+  }
+}
+
+function convertStars(rating){
+  let array = []
+    for(var i = 0; i < (rating/2); i++){
+        array.push(<Star style={iconStyles} color={yellow500}/>)
+    }
+  return array
+}
+
+const Vendor = ({vendor}) => {
   var location = vendor.location
   var rating = vendor.rating
   // var price = vendor.price.tier
@@ -19,10 +43,11 @@ const Vendor = ({vendor, convertStars}) => {
     <div id={vendor.name}>
       <div><a href={vendor.url} target='_blank'>{vendor.name}</a></div>
       <div>{convertStars(rating)} with {numberWithCommas(vendor.ratingSignals)} reviews</div>
-      {/* <div>{convertPrice(price)}</div> */}
+      {convertPrice(vendor)}
       <div>{location.address}</div>
       <div>{location.city}, {location.state} {location.postalCode}</div>
       <div>{vendor.contact.formattedPhone}</div>
+      {openNow(vendor)}
       {/* <div>{vendor.hours.status}</div>
       <div>{vendor.menu.url}</div> */}
     </div>

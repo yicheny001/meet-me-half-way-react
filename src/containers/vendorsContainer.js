@@ -26,21 +26,7 @@ const VendorsContainer = class extends Component {
     });
   }
 
-  convertStars(rating){
-    let array = []
-      for(var i = 0; i < (rating/2); i++){
-          array.push(<Star style={iconStyles} color={yellow500}/>)
-      }
-    return array
-  }
 
-  convertPrice(price){
-    let array = []
-      for(var i = 0; i < (price); i++){
-          array.push('$')
-      }
-    return array
-  }
 
   render() {
     var vendors = this.props.vendors.map((vendor) => {
@@ -52,14 +38,14 @@ const VendorsContainer = class extends Component {
       if (vendor === this.props.details.currentVendor) {
         return (
           <li className='list-group-item' data-vendor={vendor.name}>
-            <Vendor vendor={vendor} convertStars={(rating) => this.convertStars(rating)} convertPrice={(price) => this.convertPrice(price)} />
+            <Vendor vendor={vendor} />
             <DetailsContainer />
           </li>
         )
       }
       return (
         <li className='list-group-item' data-vendor={vendor.name}>
-          <Vendor vendor={vendor} convertStars={(rating) => this.convertStars(rating)} convertPrice={(price) => this.convertPrice(price)} />
+          <Vendor vendor={vendor}  />
           <ShowDetailsButton id="demo-show-toast" className="mdl-button mdl-js-button mdl-button--raised" vendor={vendor} handleClick={this.handleClick.bind(this)} />
         </li>
       )
