@@ -26,6 +26,7 @@ export default class DrawerSimpleExample extends React.Component {
   }
 
   handleToggle = () => this.setState({open: !this.state.open})
+  
   scrollUp = () => document.getElementsByClassName('address-form')[0].scrollIntoView()
 
   render() {
@@ -50,6 +51,7 @@ export default class DrawerSimpleExample extends React.Component {
           <HeaderContainer />
           <YelpForm />
           <br/>
+          <div id='results'/>
           <VendorsContainer />
         </div>
           <MenuItem

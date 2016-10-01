@@ -52,10 +52,24 @@ const styles = {
 
 class Form extends Component {
 
+scrollUp(){
+  parent = document.getElementsByClassName("aside")[0]
+  element = document.getElementById('results')
+  parent.animate({ scrollTop: element.offset().top - parent.offset().top }, { duration: 'slow', easing: 'swing'});
+
+
+
+
+  debugger
+  document.getElementById('results').scrollIntoView({block: 'end', behavior: 'smooth'})
+  setTimeout(scrollUp, 40);
+}
+
  onSubmit(data) {
    event.preventDefault()
    var {query, limit, sortBy, openNow} = data
    this.props.addSearch({query, limit, sortBy, openNow})
+   this.scrollUp()
    this.changeCurrentVendorCss()
  }
 
@@ -65,6 +79,7 @@ class Form extends Component {
      .getRenderedComponent() // on Field, returns ReduxFormMaterialUITextField
      .getRenderedComponent() // on ReduxFormMaterialUITextField, returns TextField
  }
+
 
  render() {
    const { handleSubmit, pristine, reset, submitting } = this.props
