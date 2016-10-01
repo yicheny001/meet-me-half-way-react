@@ -6,7 +6,7 @@ import SelectedAddress from '../components/selectedAddress'
 import removeAddress from '../actions/removeAddress'
 import removeDetails from '../actions/removeDetails'
 import removeError from '../actions/removeError'
-import {List} from 'material-ui/List';
+import { List } from 'material-ui/List';
 
 const HeaderContainer = class extends Component {
 

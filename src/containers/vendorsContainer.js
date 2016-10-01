@@ -8,10 +8,6 @@ import addCurrentVendor from '../actions/addCurrentVendor'
 import DetailsContainer from './detailsContainer'
 import { red500, yellow500, blue500 } from 'material-ui/styles/colors';
 
-const iconStyles = {
-  marginRight: 24,
-};
-
 const VendorsContainer = class extends Component {
 
   handleClick(event) {
@@ -26,15 +22,8 @@ const VendorsContainer = class extends Component {
     });
   }
 
-
-
   render() {
     var vendors = this.props.vendors.map((vendor) => {
-      if (!vendor) {
-        return(
-          <div>loading...</div>
-        )
-      }
       if (vendor === this.props.details.currentVendor) {
         return (
           <li className='list-group-item' data-vendor={vendor.name}>
@@ -59,7 +48,7 @@ function mapDispatchToProps(dispatch){
 }
 
 function mapStateToProps(state) {
-  return {addresses: state.addresses, vendors: state.vendors, details: state.details}
+  return {addresses: state.addresses, vendors: state.vendors.displayedVendors, details: state.details}
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(VendorsContainer)
