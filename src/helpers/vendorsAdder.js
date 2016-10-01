@@ -51,13 +51,13 @@ const VendorsAdder = class extends Component {
   fetchData(response) {
     var arrayOfDistances = response.rows.map(datum => datum.elements[0].distance.value)
     var radius = Avg(arrayOfDistances)/2 // sets a radial limit as a function of the average distance
-    var { query, limit, sortBy } = this.props.search
+    var { query, limit, sortBy, openNow } = this.props.search
     var { lat, lng } = Center(this.props.addresses)
-    return {query, lat, lng, radius, limit, sortBy}
+    return {query, lat, lng, radius, limit, sortBy, openNow}
   }
 
-  makeRequest({query, lat, lng, radius, limit, sortBy}) {
-    axios.get(`http://localhost:3006/heycutie/${query}/${lat}/${lng}/${radius}/${limit}/${sortBy}`)
+  makeRequest({query, lat, lng, radius, limit, sortBy, openNow}) {
+    axios.get(`http://localhost:3006/heycutie/${query}/${lat}/${lng}/${radius}/${limit}/${sortBy}/${openNow}`)
     .then(response => {
       var parsedData = JSON.parse(response.data)
       var vendors = parsedData.data.response.groups[0].items.map(item => item.venue)

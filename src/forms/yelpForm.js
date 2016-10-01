@@ -33,6 +33,9 @@ const styles = {
   radio:{
     fill: yellow600,
   },
+  toggle:{
+    color: yellow600,
+  },
   label:{
     color:'#fff',
     letterSpacing: '0.1em'
@@ -56,9 +59,6 @@ scrollUp(){
   parent = document.getElementsByClassName("aside")[0]
   element = document.getElementById('results')
   parent.animate({ scrollTop: element.offset().top - parent.offset().top }, { duration: 'slow', easing: 'swing'});
-
-
-
 
   debugger
   document.getElementById('results').scrollIntoView({block: 'end', behavior: 'smooth'})
@@ -125,6 +125,9 @@ scrollUp(){
          <RadioButton value="1" label="BY DISTANCE" iconStyle={styles.radio}/>
          <RadioButton value="2" label="BY RATING" iconStyle={styles.radio}/>
        </Field>
+     </div>
+     <div>
+          <Field name="openNow" elementStyle={styles.toggle} component={Toggle} label="OPEN NOW" labelPosition="right"/>
      </div>
      <br/>
 
