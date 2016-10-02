@@ -240,6 +240,17 @@ input:focus {
   margin-top: 1em;
 }
 
+.filters {
+  margin-top: 2em;
+}
+
+.error {
+  text-align: center;
+  font-size: .85em;
+  margin: 1em;
+  color: red
+}
+
 .buttons {
   margin-bottom: 2em;
 }

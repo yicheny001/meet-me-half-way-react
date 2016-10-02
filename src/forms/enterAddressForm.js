@@ -35,6 +35,10 @@ const EnterAddressForm = class extends Component {
   addressData(result){
     let {lat, lng} = result.geometry.location
     let name = result.formatted_address
+    if (this.props.addresses.find(address => address.name === name) !== undefined) {
+      this.props.addError(`${name} is already a selected address.`)
+      return false
+    }
     this.props.addAddress({lat, lng, name})
   }
 
@@ -56,8 +60,12 @@ const EnterAddressForm = class extends Component {
   }
 }
 
+function mapStateToProps(state) {
+  return {addresses: state.addresses}
+}
+
 function mapDispatchToProps(dispatch){
   return bindActionCreators({addAddress, addError}, dispatch)
 }
 
-export default connect(null, mapDispatchToProps)(EnterAddressForm)
+export default connect(mapStateToProps, mapDispatchToProps)(EnterAddressForm)

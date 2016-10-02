@@ -13,7 +13,7 @@ const styles = {
 
 const Filters = ({handleChange, handleToggle}) => {
   return (
-    <div>
+    <div className='filters'>
       <Toggle label="Open Now" style={styles.toggle} onToggle={handleToggle} />
       <TextField
       type="number"
