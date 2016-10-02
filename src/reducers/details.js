@@ -2,22 +2,13 @@ export default function details(state = {currentVendor: {}, lengths: [], travelM
   var newState
   switch(action.type) {
     case 'ADD_CURRENT_VENDOR':
-      newState = Object.assign({}, state)
-      newState.currentVendor = action.currentVendor
-      return newState
+      return {...state, currentVendor: action.currentVendor}
     case 'ADD_LENGTHS':
-      newState = Object.assign({}, state)
-      newState.lengths = action.payload
-      return newState
+      return {...state, lengths: action.payload}
     case 'CHANGE_TRAVEL_MODE':
-      newState = Object.assign({}, state)
-      newState.travelMode = action.travelMode
-      return newState
+      return {...state, travelMode: action.travelMode}
     case 'REMOVE_DETAILS':
-      newState = Object.assign({}, state)
-      newState.currentVendor = {}
-      newState.lengths = []
-      return newState
+      return {...state, currentVendor: {}, lengths: []}
     default:
       return state
   }

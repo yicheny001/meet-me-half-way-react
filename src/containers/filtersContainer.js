@@ -7,16 +7,21 @@ import Filters from '../components/filters'
 
 const FiltersContainer = class extends Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {toggled: true};
+  }
+
+  handleToggle(event) {
+    this.setState({toggled: !this.state.toggled})
+    this.props.toggleOpenNow(this.state.toggled)
+  }
+
   handleChange(event) {
     var limit = event.target.value
     if (limit !== '') {
       this.props.changeLimit(limit)
     }
-  }
-
-  handleToggle(event) {
-    var openNow = event.target.value
-    this.props.toggleOpenNow(openNow)
   }
 
   render() {

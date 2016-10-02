@@ -21,11 +21,12 @@ const HeaderContainer = class extends Component {
   }
 
   render() {
-    var selectedAddresses = this.props.addresses.map((address,index) => <SelectedAddress address={address} remove={this.remove.bind(this)} key={index}/>)
-    if (this.props.search.query) {
+    var { addresses, search, limit } = this.props
+    var selectedAddresses = addresses.map((address,index) => <SelectedAddress address={address} remove={this.remove.bind(this)} key={index}/>)
+    if (search.query) {
       return (
         <List>
-          <Header search={this.props.search}/>
+          <Header search={search} limit={limit}/>
           {selectedAddresses}
         </List>
       )
@@ -39,7 +40,7 @@ function mapDispatchToProps(dispatch) {
 }
 
 function mapStateToProps(state) {
-  return {addresses: state.addresses, search: state.search}
+  return {addresses: state.addresses, search: state.search, limit: state.vendors.limit}
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(HeaderContainer)

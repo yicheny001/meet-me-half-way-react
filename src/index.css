@@ -254,3 +254,7 @@ input:focus {
   margin-right: auto;
   margin-left: auto;
 }
+
+.price {
+  color: green
+}

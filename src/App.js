@@ -4,7 +4,8 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import DrawerSidebar from './containers/drawerContainer'
 import MapAdder from './helpers/mapAdder'
 import VendorsAdder from './helpers/vendorsAdder'
-import {blue500} from 'material-ui/styles/colors';
+import MarkersAdder from './helpers/markersAdder'
+import { blue500 } from 'material-ui/styles/colors';
 
 const muiTheme = getMuiTheme({
   palette: {
@@ -22,6 +23,7 @@ const App = class extends Component {
         <div id='map'></div>
         <MapAdder />
         <VendorsAdder />
+        <MarkersAdder />
         </div>
       </MuiThemeProvider>
     )

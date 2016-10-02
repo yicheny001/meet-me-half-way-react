@@ -1,7 +1,7 @@
 import React from 'react'
 import converter from 'number-to-words'
 
-const Header = ({search}) => {
+const Header = ({search, limit}) => {
   var capitalize = (string) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
@@ -10,7 +10,7 @@ const Header = ({search}) => {
     term = 'place'
   }
   return(
-    <div className='header'>{term} for {search.query} between:</div>
+    <div className='header'>{capitalize(converter.toWords(limit))} {term} for {search.query} between:</div>
   )
 }
 

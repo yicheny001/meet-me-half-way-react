@@ -1,8 +1,7 @@
-function addVendors({vendors, handleClick}) {
+function addVendors(vendors) {
   return {
     type: 'ADD_VENDORS',
-    vendors,
-    handleClick
+    payload: vendors
   }
 }
 

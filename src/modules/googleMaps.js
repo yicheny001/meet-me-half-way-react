@@ -42,10 +42,11 @@ const GoogleMaps = (function() {
     map.fitBounds(bounds)
   }
 
-  var calculateAndDisplayRoute = ({origin, destination, travelMode, map}) => {
+  var calculateAndDisplayRoute = ({origin, currentVendor, travelMode, map}) => {
+    var destination = new google.maps.LatLng(currentVendor.lat, currentVendor.lng)
     var directionsService = new google.maps.DirectionsService
     var directionsDisplay = new google.maps.DirectionsRenderer
-    directionsDisplay.setOptions( { suppressMarkers: true, preserveViewport: true } )
+    directionsDisplay.setOptions({suppressMarkers: true, preserveViewport: true})
     var route = []
     directionsDisplay.setMap(map)
     directionsService.route({
@@ -63,7 +64,7 @@ const GoogleMaps = (function() {
     return route
   }
 
-  return {createMap, createAndSetMarker, createAndFitBounds, calculateAndDisplayRoute}
+  return {createMap, createMarker, createAndSetMarker, createAndFitBounds, calculateAndDisplayRoute}
 
 })()
 

@@ -12,19 +12,16 @@ const VendorsContainer = class extends Component {
 
   handleClick(event) {
     event.preventDefault()
-    var { vendors, addCurrentVendor, details } = this.props
+    var { vendors, addCurrentVendor, details: { travelMode } } = this.props
     var vendorID = event.target.dataset.id
     var currentVendor = vendors.find(vendor => vendor.id === vendorID)
-    addCurrentVendor({currentVendor, travelMode: details.travelMode})
-    this.setState({
-      open: true,
-      anchorEl: event.currentTarget,
-    });
+    addCurrentVendor({currentVendor, travelMode})
   }
 
   render() {
-    var vendors = this.props.vendors.map((vendor) => {
-      if (vendor === this.props.details.currentVendor) {
+    var { vendors, details: { currentVendor } } = this.props
+    var vendors = vendors.map((vendor) => {
+      if (vendor === currentVendor) {
         return (
           <li className='list-group-item' data-vendor={vendor.name}>
             <Vendor vendor={vendor} />

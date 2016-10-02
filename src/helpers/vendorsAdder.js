@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import addVendors from '../actions/addVendors'
-import addCurrentVendor from '../actions/addCurrentVendor'
 import removeVendors from '../actions/removeVendors'
 import addError from '../actions/addError'
 import Center from '../modules/center'
@@ -29,16 +28,6 @@ const VendorsAdder = class extends Component {
     }
   }
 
-  handleClick(currentVendor) {
-    var { addCurrentVendor, travelMode } = this.props
-    addCurrentVendor({currentVendor, travelMode})
-    this.scrollTo(currentVendor)
-  }
-
-  scrollTo(vendor) {
-    document.getElementById(`${vendor.name}`).scrollIntoView()
-  }
-
   callback(response, status) {
     if (response.rows[0].elements[0].status === 'ZERO_RESULTS') {
       this.props.addError('Sorry, data for this query is unavailable.')
@@ -61,7 +50,7 @@ const VendorsAdder = class extends Component {
     .then(response => {
       var parsedData = JSON.parse(response.data)
       var vendors = parsedData.data.response.groups[0].items.map(item => item.venue)
-      this.props.addVendors({vendors, handleClick: this.handleClick.bind(this)})
+      this.props.addVendors(vendors)
     })
   }
 
@@ -73,14 +62,17 @@ const VendorsAdder = class extends Component {
 function mapDispatchToProps(dispatch){
   return bindActionCreators({
     addVendors,
-    addCurrentVendor,
     removeVendors,
     addError
   }, dispatch)
 }
 
 function mapStateToProps(state) {
-  return {addresses: state.addresses, search: state.search, travelMode: state.details.travelMode}
+  return {
+    addresses: state.addresses,
+    search: state.search,
+    travelMode: state.details.travelMode
+  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(VendorsAdder)
