@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import addMarkers from '../actions/addMarkers'
-import adjustMarkers from '../actions/adjustMarkers'
-import addCurrentVendor from '../actions/addCurrentVendor'
+import { addMarkers, adjustMarkers } from '../actions/map'
+import { addCurrentVendor } from '../actions/details'
 
 const MarkersAdder = class extends Component {
 

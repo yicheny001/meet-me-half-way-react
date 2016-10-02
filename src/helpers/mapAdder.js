@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import GoogleMaps from '../modules/googleMaps'
-import addMap from '../actions/addMap'
+import { addMap } from '../actions/map'
 
 const MapAdder = class extends Component {
 

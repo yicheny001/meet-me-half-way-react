@@ -36,7 +36,7 @@ const Vendor = ({vendor}) => {
   var rating = vendor.rating
   return (
     <div id={vendor.name}>
-      <div><a href={vendor.url} target='_blank'>{vendor.name} &nbsp; <span className='price'>{convertPrice(vendor)}</span></a></div>
+      <div><a href={vendor.url} target='_blank'>{vendor.name}</a>&nbsp; <span className='price'>{convertPrice(vendor)}</span></div>
       <div>{convertStars(rating)} with {numberWithCommas(vendor.ratingSignals)} reviews</div>
       <div>{location.address}</div>
       <div>{location.city}, {location.state} {location.postalCode}</div>
