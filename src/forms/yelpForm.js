@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import addSearch from '../actions/addSearch'
+import { addSearch } from '../actions/search'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { Field, reduxForm } from 'redux-form'
@@ -7,7 +7,7 @@ import { RadioButton } from 'material-ui/RadioButton'
 import MenuItem from 'material-ui/MenuItem'
 import { AutoComplete as MUIAutoComplete } from 'material-ui'
 import FlatButton from 'material-ui/FlatButton';
-import {yellow600, yellow200, blue200, blue500} from 'material-ui/styles/colors';
+import { yellow600, yellow200, blue200, blue500 } from 'material-ui/styles/colors';
 import {
  AutoComplete,
  TextField,

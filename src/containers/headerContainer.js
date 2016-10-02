@@ -3,9 +3,9 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import Header from '../components/header.js'
 import SelectedAddress from '../components/selectedAddress'
-import removeAddress from '../actions/removeAddress'
-import removeDetails from '../actions/removeDetails'
-import removeError from '../actions/removeError'
+import { removeAddress } from '../actions/addresses'
+import { removeDetails } from '../actions/details'
+import { removeError } from '../actions/error'
 import { List } from 'material-ui/List';
 
 const HeaderContainer = class extends Component {

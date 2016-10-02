@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import changeLimit from '../actions/changeLimit'
-import toggleOpenNow from '../actions/toggleOpenNow'
+import { changeLimit, toggleOpenNow } from '../actions/vendors'
 import Filters from '../components/filters'
 
 const FiltersContainer = class extends Component {

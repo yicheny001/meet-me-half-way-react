@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import addAddress from '../actions/addAddress'
-import addError from '../actions/addError'
+import { addAddress } from '../actions/addresses'
+import { addError } from '../actions/error'
 import Geosuggest from 'react-geosuggest';
 import MapsAddLocation from 'material-ui/svg-icons/maps/add-location';
 import FlatButton from 'material-ui/FlatButton';

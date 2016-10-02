@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import Star from 'material-ui/svg-icons/toggle/star';
 import Vendor from '../components/vendor'
 import ShowDetailsButton from '../components/showDetailsButton'
-import addCurrentVendor from '../actions/addCurrentVendor'
+import { addCurrentVendor } from '../actions/details'
 import DetailsContainer from './detailsContainer'
 import { red500, yellow500, blue500 } from 'material-ui/styles/colors';
 

@@ -3,9 +3,8 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import TravelModes from '../components/travelModes'
 import Details from '../components/details'
-import addLengths from '../actions/addLengths'
-import changeTravelMode from '../actions/changeTravelMode'
-import addError from '../actions/addError'
+import { addLengths, changeTravelMode } from '../actions/details'
+import { addError } from '../actions/error'
 import DistanceMatrix from '../modules/distanceMatrix'
 
 const DetailsContainer = class extends Component {
