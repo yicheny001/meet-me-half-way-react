@@ -21,6 +21,7 @@ const Filters = ({handleChange, handleToggle}) => {
       floatingLabelText="How many results?"
       onChange={handleChange}
       defaultValue={3}
+      min={1}
       />
     </div>
   )
