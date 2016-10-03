@@ -2,11 +2,9 @@ import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { addVendors, removeVendors } from '../actions/vendors'
-import { removeDetails } from '../actions/removeDetails'
+import { removeDetails } from '../actions/details'
 import { addError, removeError } from '../actions/error'
 import Center from '../modules/center'
-import DistanceMatrix from '../modules/distanceMatrix'
-import Avg from '../modules/avg'
 import axios from 'axios'
 
 const VendorsAdder = class extends Component {
@@ -17,29 +15,13 @@ const VendorsAdder = class extends Component {
     removeDetails()
     removeError()
     if (addresses.length >= 2 && query) {
-      var center = Center(addresses)
-      DistanceMatrix(addresses, center, 'DRIVING', this.callback.bind(this))
-      // adds vendors if there are at least two inputted addresses and a query
-      // verifies that location is accessible
+      this.makeRequest()
     }
   }
 
-  callback(response, status) {
-    if (response.rows[0].elements[0].status === 'ZERO_RESULTS') {
-      this.props.addError('Sorry, data for this query is unavailable.')
-      return false
-    }
-    var data = this.fetchData(response)
-    this.makeRequest(data)
-  }
-
-  fetchData(response) {
+  makeRequest() {
     var { query, addresses } = this.props
     var { lat, lng } = Center(addresses)
-    return {query, lat, lng}
-  }
-
-  makeRequest({query, lat, lng}) {
     axios.get(`http://localhost:3006/heycutie/${query}/${lat}/${lng}`)
     .then(response => {
       var parsedData = JSON.parse(response.data)

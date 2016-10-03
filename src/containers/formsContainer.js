@@ -22,8 +22,8 @@ const FormsContainer = class extends Component {
   }
 
   scrollUp() {
-    parent = document.getElementsByClassName("aside")[0]
-    element = document.getElementById('results')
+    var parent = document.getElementsByClassName("aside")[0]
+    var element = document.getElementById('results')
     parent.animate({ scrollTop: element.offset().top - parent.offset().top }, { duration: 'slow', easing: 'swing'});
 
     document.getElementById('results').scrollIntoView({block: 'end', behavior: 'smooth'})

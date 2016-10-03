@@ -33,7 +33,6 @@ function convertStars(rating){
 
 const Vendor = (vendor) => {
   var { location, rating } = vendor
-  debugger
   return (
     <div id={vendor.name}>
       <div><a href={vendor.url} target='_blank'>{vendor.name}</a>&nbsp; <span className='price'>{convertPrice(vendor)}</span></div>

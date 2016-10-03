@@ -24,3 +24,17 @@ export function changeLimit(limit) {
     payload: limit
   }
 }
+
+export function changeRadius(factor) {
+  return {
+    type: 'CHANGE_RADIUS',
+    payload: factor
+  }
+}
+
+export function changePrice(price) {
+  return {
+    type: 'CHANGE_PRICE',
+    payload: price
+  }
+}

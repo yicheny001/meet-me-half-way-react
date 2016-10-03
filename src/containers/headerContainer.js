@@ -29,7 +29,7 @@ const HeaderContainer = class extends Component {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({removeAddress, removeDetails, removeError}, dispatch)
+  return bindActionCreators({removeAddress}, dispatch)
 }
 
 function mapStateToProps(state) {
