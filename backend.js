@@ -13,7 +13,7 @@ app.listen(3006, function () {
   console.log('welcome to meet me halfway ayy lmao')
 });
 
-app.get('/heycutie/:query/:lat/:lng/:radius', function (req, res) {
+app.get('/heycutie/:query/:lat/:lng', function (req, res) {
   var query = req.params.query
   var ll = `${req.params.lat},${req.params.lng}`
   axios.get(`https://api.foursquare.com/v2/venues/explore?client_id=BHEG2XXZ2ZHKVQQAT1ZOJTF1GZX2VF1HLDNPWWBZJLDNMUDN&client_secret=4MOFLTHLVYDX1BZCMRPD2250EAZWIPBXQJT5ZREZANUGWGSJ&v=20130815&ll=${ll}&query=${query}`)

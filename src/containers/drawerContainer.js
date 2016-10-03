@@ -8,8 +8,7 @@ import FontIcon from 'material-ui/FontIcon';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
 
-import EnterAddressForm from '../forms/enterAddressForm'
-import YelpForm from '../forms/yelpForm'
+import FormsContainer from '../containers/formsContainer'
 import ErrorContainer from '../containers/errorContainer'
 import HeaderContainer from '../containers/headerContainer'
 import VendorsContainer from '../containers/vendorsContainer'
@@ -48,12 +47,9 @@ export default class DrawerSidebar extends React.Component {
         <div className='aside'>
           <img className="image" src="http://s9.postimg.org/k6a8x8hsf/Screen_Shot_2016_09_20_at_8_56_15_PM.png" />
           <ErrorContainer />
-          <EnterAddressForm />
-          <HeaderContainer />
-          <YelpForm />
+          <FormsContainer />
           <FiltersContainer />
-          <br/>
-          <div id='results'/>
+          <HeaderContainer />
           <VendorsContainer />
         </div>
           <MenuItem

@@ -1,7 +1,7 @@
 import React from 'react'
 
 const Details = ({address, length}) => {
-  if(!length){
+  if (!length) {
     return <div>...loading</div>
   }
   else{

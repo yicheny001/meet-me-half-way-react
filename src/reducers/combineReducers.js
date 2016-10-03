@@ -5,7 +5,6 @@ import vendors from './vendors'
 import details from './details'
 import map from './map'
 import error from './error'
-import { reducer as form } from 'redux-form';
 
 const rootReducer = combineReducers({
   addresses,
@@ -13,8 +12,7 @@ const rootReducer = combineReducers({
   vendors,
   details,
   map,
-  error,
-  form
+  error
 });
 
 export default rootReducer;

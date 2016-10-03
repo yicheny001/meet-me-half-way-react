@@ -18,12 +18,13 @@ const VendorsAdder = class extends Component {
   }
 
   componentDidUpdate() {
-    var { removeVendors, addresses, search } = this.props
+    var { removeVendors, addresses, search: query } = this.props
     removeVendors()
-    if (addresses.length >= 2 && search.query) {
+    if (addresses.length >= 2 && query) {
       var center = Center(addresses)
       DistanceMatrix(addresses, center, 'DRIVING', this.callback.bind(this))
       // adds vendors if there are at least two inputted addresses and a query
+      // verifies that location is accessible
     }
   }
 
@@ -37,15 +38,13 @@ const VendorsAdder = class extends Component {
   }
 
   fetchData(response) {
-    var arrayOfDistances = response.rows.map(datum => datum.elements[0].distance.value)
-    var radius = Avg(arrayOfDistances)/2 // sets a radial limit as a function of the average distance
     var { query } = this.props.search
     var { lat, lng } = Center(this.props.addresses)
-    return {query, lat, lng, radius}
+    return {query, lat, lng}
   }
 
-  makeRequest({query, lat, lng, radius}) {
-    axios.get(`http://localhost:3006/heycutie/${query}/${lat}/${lng}/${radius}`)
+  makeRequest({query, lat, lng}) {
+    axios.get(`http://localhost:3006/heycutie/${query}/${lat}/${lng}`)
     .then(response => {
       var parsedData = JSON.parse(response.data)
       var vendors = parsedData.data.response.groups[0].items.map(item => item.venue)

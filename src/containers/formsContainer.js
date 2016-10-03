@@ -1,20 +1,36 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import AddressForm from '../components/addressForm'
+import QueryForm from '../components/queryForm'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { addAddress } from '../actions/addresses'
+import { addSearch } from '../actions/search'
 import { addError } from '../actions/error'
-import Geosuggest from 'react-geosuggest';
-import MapsAddLocation from 'material-ui/svg-icons/maps/add-location';
-import FlatButton from 'material-ui/FlatButton';
 
 const styles = {
   'minWidth':'0px !important'
 }
 
-const EnterAddressForm = class extends Component {
+const FormsContainer = class extends Component {
 
-  onSubmit(event) {
+  querySubmit(event) {
+    event.preventDefault()
+    var query = event.target.firstChild.children[2].value
+    this.props.addSearch({query})
+    this.scrollUp()
+  }
+
+  scrollUp() {
+    parent = document.getElementsByClassName("aside")[0]
+    element = document.getElementById('results')
+    parent.animate({ scrollTop: element.offset().top - parent.offset().top }, { duration: 'slow', easing: 'swing'});
+
+    document.getElementById('results').scrollIntoView({block: 'end', behavior: 'smooth'})
+    setTimeout(scrollUp, 40);
+  }
+
+  addressSubmit(event) {
     event.preventDefault()
     var address = event.target.firstChild.firstChild.firstChild.value
     event.target.firstChild.firstChild.firstChild.value = ''
@@ -44,18 +60,10 @@ const EnterAddressForm = class extends Component {
 
   render() {
     return (
-      <form className='address-form' onSubmit={this.onSubmit.bind(this)}>
-      <Geosuggest
-      className='mdl-textfield mdl-js-textfield mdl-textfield--floating-label'
-      placeholder="ADDRESS"
-      onSuggestSelect={this.onSuggestSelect}
-      onSubmit={this.onSubmit.bind(this)}
-      country='us'
-      onFocus={this.onFocus}
-      onBlur={this.onBlur}
-      />
-      <FlatButton style={styles} type='submit' icon={<MapsAddLocation />} />
-      </form>
+      <div>
+        <AddressForm onSubmit={this.addressSubmit.bind(this)} />
+        <QueryForm onSubmit={this.querySubmit.bind(this)} />
+      </div>
     )
   }
 }
@@ -65,7 +73,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch){
-  return bindActionCreators({addAddress, addError}, dispatch)
+  return bindActionCreators({addAddress, addError, addSearch}, dispatch)
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(EnterAddressForm)
+export default connect(mapStateToProps, mapDispatchToProps)(FormsContainer)
