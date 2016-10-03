@@ -9,7 +9,7 @@ const styles = {
 
 const AddressForm = ({onSubmit}) => {
   return (
-    <form className='address-form' onSubmit={onSubmit}>
+    <form id='address-form' onSubmit={onSubmit}>
       <Geosuggest
       className='mdl-textfield mdl-js-textfield mdl-textfield--floating-label'
       placeholder="ENTER AN ADDRESS!"

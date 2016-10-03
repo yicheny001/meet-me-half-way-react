@@ -24,14 +24,14 @@ const VendorsContainer = class extends Component {
       if (vendor === currentVendor) {
         return (
           <li className='list-group-item' data-vendor={vendor.name}>
-            <Vendor vendor={vendor} />
+            <Vendor {...vendor} />
             <DetailsContainer />
           </li>
         )
       }
       return (
         <li className='list-group-item' data-vendor={vendor.name}>
-          <Vendor vendor={vendor}  />
+          <Vendor {...vendor}  />
           <ShowDetailsButton id="demo-show-toast" className="mdl-button mdl-js-button mdl-button--raised" vendor={vendor} handleClick={this.handleClick.bind(this)} />
         </li>
       )

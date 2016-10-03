@@ -27,7 +27,7 @@ export default class DrawerSidebar extends React.Component {
 
   handleToggle = () => this.setState({open: !this.state.open})
 
-  scrollUp = () => document.getElementsByClassName('address-form')[0].scrollIntoView()
+  scrollUp = () => document.getElementId('address-form').scrollIntoView()
 
   render() {
     return (

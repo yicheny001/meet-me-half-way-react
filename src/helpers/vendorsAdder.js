@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { addVendors, removeVendors } from '../actions/vendors'
-import { addError } from '../actions/error'
+import { removeDetails } from '../actions/removeDetails'
+import { addError, removeError } from '../actions/error'
 import Center from '../modules/center'
 import DistanceMatrix from '../modules/distanceMatrix'
 import Avg from '../modules/avg'
@@ -11,8 +12,10 @@ import axios from 'axios'
 const VendorsAdder = class extends Component {
 
   componentDidUpdate() {
-    var { removeVendors, addresses, query } = this.props
+    var { removeVendors, removeDetails, removeError, addresses, query } = this.props
     removeVendors()
+    removeDetails()
+    removeError()
     if (addresses.length >= 2 && query) {
       var center = Center(addresses)
       DistanceMatrix(addresses, center, 'DRIVING', this.callback.bind(this))
@@ -54,7 +57,9 @@ function mapDispatchToProps(dispatch){
   return bindActionCreators({
     addVendors,
     removeVendors,
-    addError
+    removeDetails,
+    addError,
+    removeError
   }, dispatch)
 }
 
