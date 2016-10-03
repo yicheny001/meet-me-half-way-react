@@ -10,19 +10,18 @@ import DistanceMatrix from '../modules/distanceMatrix'
 const DetailsContainer = class extends Component {
 
   componentWillMount() {
-    var {lat, lng} = this.props.details.currentVendor
+    var { addresses, details: { travelMode, currentVendor: { lat, lng } } } = this.props
     var destination = {lat, lng}
-    DistanceMatrix(this.props.addresses, destination, this.props.details.travelMode, this.callback.bind(this))
+    DistanceMatrix(addresses, destination, travelMode, this.callback.bind(this))
   }
 
   componentWillUpdate(nextProps) {
     if (this.props.details.travelMode === nextProps.details.travelMode) {
       return false
     }
-    var {lat, lng} = nextProps.details.currentVendor
+    var { lat, lng } = nextProps.details.currentVendor
     var destination = {lat, lng}
     DistanceMatrix(this.props.addresses, destination, nextProps.details.travelMode, this.callback.bind(this))
-    return true
   }
 
   callback(response, status) {

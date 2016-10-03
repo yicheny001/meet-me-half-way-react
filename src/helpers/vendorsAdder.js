@@ -10,15 +10,8 @@ import axios from 'axios'
 
 const VendorsAdder = class extends Component {
 
-  shouldComponentUpdate(nextProps) {
-    if (this.props.travelMode !== nextProps.travelMode) {
-      return false // does not update if travelMode changes
-    }
-    return true
-  }
-
   componentDidUpdate() {
-    var { removeVendors, addresses, search: query } = this.props
+    var { removeVendors, addresses, query } = this.props
     removeVendors()
     if (addresses.length >= 2 && query) {
       var center = Center(addresses)
@@ -38,8 +31,8 @@ const VendorsAdder = class extends Component {
   }
 
   fetchData(response) {
-    var { query } = this.props.search
-    var { lat, lng } = Center(this.props.addresses)
+    var { query, addresses } = this.props
+    var { lat, lng } = Center(addresses)
     return {query, lat, lng}
   }
 
@@ -68,8 +61,7 @@ function mapDispatchToProps(dispatch){
 function mapStateToProps(state) {
   return {
     addresses: state.addresses,
-    search: state.search,
-    travelMode: state.details.travelMode
+    query: state.query
   }
 }
 

@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import addresses from './addresses'
-import search from './search'
+import query from './query'
 import vendors from './vendors'
 import details from './details'
 import map from './map'
@@ -8,7 +8,7 @@ import error from './error'
 
 const rootReducer = combineReducers({
   addresses,
-  search,
+  query,
   vendors,
   details,
   map,

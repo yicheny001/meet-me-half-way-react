@@ -5,7 +5,7 @@ import QueryForm from '../components/queryForm'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { addAddress } from '../actions/addresses'
-import { addSearch } from '../actions/search'
+import { addQuery } from '../actions/query'
 import { addError } from '../actions/error'
 
 const styles = {
@@ -17,7 +17,7 @@ const FormsContainer = class extends Component {
   querySubmit(event) {
     event.preventDefault()
     var query = event.target.firstChild.children[2].value
-    this.props.addSearch({query})
+    this.props.addQuery(query)
     this.scrollUp()
   }
 
@@ -73,7 +73,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch){
-  return bindActionCreators({addAddress, addError, addSearch}, dispatch)
+  return bindActionCreators({addAddress, addError, addQuery}, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(FormsContainer)

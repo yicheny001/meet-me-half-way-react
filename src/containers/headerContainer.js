@@ -17,17 +17,16 @@ const HeaderContainer = class extends Component {
 
   remove(event) {
     event.preventDefault()
-    debugger
     this.props.removeAddress(event.target.parentElement.nextSibling.innerHTML)
   }
 
   render() {
-    var { addresses, search, limit } = this.props
-    var selectedAddresses = addresses.map((address,index) => <SelectedAddress address={address} remove={this.remove.bind(this)} key={index}/>)
-    if (search.query) {
+    var { addresses, query, limit } = this.props
+    var selectedAddresses = addresses.map((address, index) => <SelectedAddress address={address} remove={this.remove.bind(this)} key={index}/>)
+    if (query) {
       return (
         <List>
-          <Header search={search} limit={limit}/>
+          <Header query={query} limit={limit}/>
           {selectedAddresses}
         </List>
       )
@@ -41,7 +40,7 @@ function mapDispatchToProps(dispatch) {
 }
 
 function mapStateToProps(state) {
-  return {addresses: state.addresses, search: state.search, limit: state.vendors.limit}
+  return {addresses: state.addresses, query: state.query, limit: state.vendors.limit}
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(HeaderContainer)

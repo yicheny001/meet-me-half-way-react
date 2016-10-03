@@ -1,6 +1,6 @@
-export default function search(state = {}, action) {
+export default function query(state = null, action) {
   switch(action.type) {
-    case 'ADD_SEARCH':
+    case 'ADD_QUERY':
       return action.payload
     default:
       return state

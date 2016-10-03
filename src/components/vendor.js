@@ -1,19 +1,19 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import Star from 'material-ui/svg-icons/toggle/star';
-import {red500, yellow500, blue500} from 'material-ui/styles/colors';
+import { red500, yellow500, blue500 } from 'material-ui/styles/colors';
 
 function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
 function openNow(vendor){
-  if(vendor.hours){
+  if (vendor.hours) {
     return <div>{vendor.hours.status}</div>
   }
 }
 
 function convertPrice(vendor){
-  if(vendor.price){
+  if (vendor.price) {
     let price = vendor.price.tier
     let array = []
       for(var i = 0; i < (price); i++){

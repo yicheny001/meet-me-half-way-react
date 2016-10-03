@@ -6,7 +6,7 @@ import ActionDelete from 'material-ui/svg-icons/action/delete';
 const styles = {
   li: {padding: '2px 30px 2px 2px'},
   button: {margin: '0px'}
-};
+}
 
 const SelectedAddress = ({address, remove}) => {
   return (
