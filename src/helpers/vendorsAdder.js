@@ -24,8 +24,11 @@ const VendorsAdder = class extends Component {
     var { lat, lng } = Center(addresses)
     axios.get(`http://localhost:3006/heycutie/${query}/${lat}/${lng}`)
     .then(response => {
-      var parsedData = JSON.parse(response.data)
-      var vendors = parsedData.data.response.groups[0].items.map(item => item.venue)
+      var parsedData = JSON.parse(response.data).data.response
+      if (parsedData.totalResults === 0) {
+        this.props.addError("Sorry, there is no data available for this query.")
+      }
+      var vendors = parsedData.groups[0].items.map(item => item.venue)
       this.props.addVendors(vendors)
     })
   }

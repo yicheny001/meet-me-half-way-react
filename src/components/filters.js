@@ -12,7 +12,6 @@ const textStyle = {
 
 const toggleStyle = {...textStyle, paddingLeft: 10, paddingRight: 10}
 
-
 const Filters = ({handleChange, handleToggle, handleDragRadius, handleStopRadius, handleDragPrice, handleStopPrice}) => {
   return (
     <div className='filters'>

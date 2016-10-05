@@ -23,5 +23,6 @@ app.get('/heycutie/:query/:lat/:lng', function (req, res) {
   })
   .catch(function (err) {
     console.error(err)
+    res.json(error)
   })
 })
