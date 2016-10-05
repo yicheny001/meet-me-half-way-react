@@ -235,8 +235,8 @@ input:focus {
 
 .header {
   font-size: 1.2em;
-  font-weight: 600;
-  margin: .5em;
+  font-weight: 500;
+  margin-bottom: 10px;
 }
 
 .query-text {
@@ -268,18 +268,21 @@ input:focus {
 }
 
 .price {
-  color: green
+  color: #FF5722;
 }
 
 .slider-container {
   width: 130px;
+  height: 100px;
   display: inline-block;
-  margin: .5em
+  margin: .5em;
 }
 
 .slider-label {
   padding-left: 2px;
-  font-size: .8em;
+  font-size: 11px ;
+  letter-spacing: 0.07em !important;
+  font-weight: 500;
 }
 
 .filters {

@@ -24,7 +24,7 @@ const HeaderContainer = class extends Component {
         </List>
       )
     }
-    return <div>{selectedAddresses}</div>
+    return <div>{selectedAddresses}<br/></div>
   }
 }
 

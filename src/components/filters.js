@@ -20,14 +20,16 @@ const styles = {
   textField:{
     color: blue500,
     borderColor: blue500,
-    width: 150,
+    width: 135,
   },
 
   slider:{
-    width:100,
     fill: blue500,
     border: blue500,
+    height: 60,
   }
+}
+
 const textStyle = {
   display: 'inline-block',
   marginRight: 5,
@@ -35,13 +37,12 @@ const textStyle = {
   width: 135
 }
 
-const toggleStyle = {...textStyle, paddingLeft: 10, paddingRight: 10}
+const toggleStyle = {...textStyle, paddingLeft: 5, paddingRight: 10}
 
 const Filters = ({handleChange, handleToggle, handleDragRadius, handleStopRadius, handleDragPrice, handleStopPrice}) => {
   return (
-    <div>
+    <div className='filters'>
       <br />
-      <div className='filters'>
       <Toggle
         label="OPEN NOW"
         elementStyle={styles.toggle}
@@ -59,10 +60,8 @@ const Filters = ({handleChange, handleToggle, handleDragRadius, handleStopRadius
       underlineFocusStyle={styles.textField}
       floatingLabelFocusStyle={styles.textField}
       />
-      <Slider style={styles.slider} defaultValue={1} min={0.5} max={1.5} onChange={handleDragRadius} onDragStop={handleStopRadius}/>
-      <Slider sliderStyle={styles.slider} defaultValue={4} min={1} max={4} step={1} onChange={handleDragPrice} onDragStop={handleStopPrice}/>
       <div className='slider-container'>
-        <div className='slider-label'>Maximum Distance</div>
+        <div className='slider-label'>MAX DISTANCE</div>
         <Slider
         defaultValue={1}
         min={0.5}
@@ -72,7 +71,7 @@ const Filters = ({handleChange, handleToggle, handleDragRadius, handleStopRadius
         />
       </div>
       <div className='slider-container'>
-        <div className='slider-label'>Maximum Price</div>
+        <div className='slider-label'>MAX PRICE</div>
         <Slider
         defaultValue={4}
         min={1}
@@ -80,6 +79,7 @@ const Filters = ({handleChange, handleToggle, handleDragRadius, handleStopRadius
         step={1}
         onChange={handleDragPrice}
         onDragStop={handleStopPrice}
+        style={styles.slider}
         />
       </div>
     </div>
