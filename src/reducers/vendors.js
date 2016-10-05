@@ -22,7 +22,9 @@ export default function vendors(state = {allVendors: [], displayedVendors: [], o
       displayedVendors = applyFilters(allVendors, state.openNow, state.limit, radius, state.price)
       return {...state, allVendors, displayedVendors, radius, type: 'add'}
     case 'REMOVE_VENDORS':
+    case 'NUKE':
       return {...state, allVendors: [], displayedVendors: [], type: null}
+      break
     case 'TOGGLE_OPEN_NOW': // try to abstract this block into a function because it can be reused
       openNow = action.payload
       displayedVendors = applyFilters(state.allVendors, openNow, state.limit, state.radius, state.price)

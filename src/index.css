@@ -282,3 +282,8 @@ input:focus {
   padding-left: 2px;
   font-size: .8em;
 }
+
+.filters {
+  width: 296px;
+  length: 190px;
+}

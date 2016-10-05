@@ -2,7 +2,7 @@ import React from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
 import Popover from 'material-ui/Popover';
 import FiltersContainer from './filtersContainer'
-import MenuItem from 'material-ui/MenuItem';
+
 
 export default class PopoverExampleSimple extends React.Component {
 
@@ -35,7 +35,7 @@ export default class PopoverExampleSimple extends React.Component {
       <div>
         <RaisedButton
           onTouchTap={this.handleTouchTap}
-          label="Click me"
+          label="Filters"
         />
         <Popover
           open={this.state.open}

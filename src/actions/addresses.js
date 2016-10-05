@@ -11,3 +11,9 @@ export function removeAddress(address) {
     payload: address
   }
 }
+
+export function nuke() {
+  return {
+    type: 'NUKE'
+  }
+}
