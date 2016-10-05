@@ -14,7 +14,7 @@ const styles = {
   }
 }
 
-const QueryForm = ({onSubmit}) => {
+const QueryForm = ({onSubmit, nuke}) => {
   return (
     <form className='query-form' onSubmit={onSubmit}>
       <TextField
@@ -29,7 +29,7 @@ const QueryForm = ({onSubmit}) => {
       <br/>
       <br/>
       <FlatButton type='submit' label="FIND PLACES!" backgroundColor={blue500} labelStyle={styles.label}	hoverColor={yellow200} /> &nbsp; &nbsp; &nbsp;
-      <FlatButton label="CLEAR" backgroundColor={yellow600} labelStyle={styles.label}	hoverColor={blue200} />
+      <FlatButton label="CLEAR" onClick={nuke} backgroundColor={yellow600} labelStyle={styles.label}	hoverColor={blue200} />
     </form>
   )
 }

@@ -69,6 +69,10 @@ export default function map(state = {map: {}, markers: [], routes: [], currentVe
       routes = originNames.map(origin => GoogleMaps.calculateAndDisplayRoute({origin, currentVendor, travelMode, map}))
       return {...state, routes, currentVendor}
       break
+    case 'NUKE':
+      if (state.markers.length > 0) state.markers.forEach(marker => marker.setMap(null))
+      deleteRoutes(state)
+      return {map, markers: [], routes: [], currentVendor: {}}
     default:
       return state
   }

@@ -4,7 +4,7 @@ import AddressForm from '../components/addressForm'
 import QueryForm from '../components/queryForm'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { addAddress } from '../actions/addresses'
+import { addAddress, nuke } from '../actions/addresses'
 import { addQuery } from '../actions/query'
 import { addError } from '../actions/error'
 
@@ -58,11 +58,15 @@ const FormsContainer = class extends Component {
     this.props.addAddress({lat, lng, name})
   }
 
+  nuke() {
+    this.props.nuke()
+  }
+
   render() {
     return (
       <div>
         <AddressForm onSubmit={this.addressSubmit.bind(this)} />
-        <QueryForm onSubmit={this.querySubmit.bind(this)} />
+        <QueryForm onSubmit={this.querySubmit.bind(this)} nuke={this.nuke.bind(this)}/>
       </div>
     )
   }
@@ -73,7 +77,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch){
-  return bindActionCreators({addAddress, addError, addQuery}, dispatch)
+  return bindActionCreators({addAddress, addError, addQuery, nuke}, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(FormsContainer)

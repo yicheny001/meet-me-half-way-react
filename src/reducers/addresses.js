@@ -7,6 +7,8 @@ export default function addresses(state = [], action) {
       var addressToRemove = newState.find(address => address.name === action.payload)
       newState.splice(newState.indexOf(addressToRemove), 1)
       return newState
+    case 'NUKE':
+      return []
     default:
       return state
   }
