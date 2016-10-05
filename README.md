@@ -6,7 +6,7 @@ Checkout the original Ruby version [here](https://github.com/leearaneta/meet-me-
 ##Meet Me Halfway
 Enter you and your friends' addresses (up to 10) to find out where to hangout around your midpoint!
 View the different transportation modes and how long it takes for each person to get to the destination at ease.
-[Demo](https://vimeo.com/185692228) 
+:eyes:[Demo](https://vimeo.com/185692228) 
 
 ##Built with:
 * React.js
