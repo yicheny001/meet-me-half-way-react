@@ -20,13 +20,12 @@ input, .geosuggest__suggests, .capCalibri, .geosuggest__suggests--hidden{
   font-family: 'Noto Sans', sans-serif !important;
   font-size: 11px !important;
   letter-spacing: 0.1em !important;
-  padding: 6px 6px 6px 6px !important;
 }
 
 label {
   width: 88% ;
   font-size: 11px ;
-  letter-spacing: 0.1em !important;
+  letter-spacing: 0.07em !important;
 
 }
 
