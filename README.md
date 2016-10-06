@@ -27,4 +27,4 @@ View the different transportation modes and how long it takes for each person to
 
 [Lee Araneta](https://github.com/leearaneta/) | lee.araneta@gmail.com
 
-Feel free to let us know if you have any feedback!
+Any feedback is greatly appreciated :)
