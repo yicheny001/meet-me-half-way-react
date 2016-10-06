@@ -1,10 +1,12 @@
 # README
 
 This is a project completed by Lee Araneta and Yichen Yang, two grads from the Flatiron School, June cohort.
+
 We've decided to add new features to the original [Ruby version](https://github.com/leearaneta/meet-me-halfway) shown at Flatiron Presents using React-Redux. Checkout the [demo](https://vimeo.com/185692228) here! :eyes: 
 
 ##Meet Me Halfway
 Enter you and your friends' addresses (up to 10) to find out where to hangout around your midpoint!
+
 View the different transportation modes and how long it takes for each person to get to the destination at ease.
  
 
@@ -23,3 +25,4 @@ View the different transportation modes and how long it takes for each person to
 
 [Lee Araneta](https://github.com/leearaneta/) | lee.araneta@gmail.com
 
+Feel free to let us know if you have any feedback!
