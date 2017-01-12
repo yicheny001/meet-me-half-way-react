@@ -23,11 +23,7 @@ const styles = {
     width: 135,
   },
 
-  slider:{
-    fill: blue500,
-    border: blue500,
-    height: 60,
-  }
+
 }
 
 const textStyle = {
@@ -79,7 +75,6 @@ const Filters = ({handleChange, handleToggle, handleDragRadius, handleStopRadius
         step={1}
         onChange={handleDragPrice}
         onDragStop={handleStopPrice}
-        style={styles.slider}
         />
       </div>
     </div>

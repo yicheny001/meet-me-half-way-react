@@ -15,8 +15,9 @@ app.listen(3006, function () {
 
 app.get('/heycutie/:query/:lat/:lng', function (req, res) {
   var query = req.params.query
-  var ll = `${req.params.lat},${req.params.lng}`
-  axios.get(`https://api.foursquare.com/v2/venues/explore?client_id=BHEG2XXZ2ZHKVQQAT1ZOJTF1GZX2VF1HLDNPWWBZJLDNMUDN&client_secret=4MOFLTHLVYDX1BZCMRPD2250EAZWIPBXQJT5ZREZANUGWGSJ&v=20130815&ll=${ll}&query=${query}`)
+  var ll = `${req.params.lat}%2C%20-${req.params.lng}`
+  var url = `https://api.foursquare.com/v2/venues/explore?v=20161016&ll=${req.params.lat},${req.params.lng}&query=${query}&client_id=QEAJDDJJEEQOAZHNRNFPNZQ4WPTM05ZBFUYSKG0ZMF3V2UCS&client_secret=XRC5OOQPKD2TMDU1LA2RRKQ5H3AOEINPU3HMDVZVVRGHACLX`
+  axios.get(url)
   .then(function (data) {
     var stringifiedData = CircularJSON.stringify(data)
     res.json(stringifiedData)

@@ -18,7 +18,7 @@ const FormsContainer = class extends Component {
     event.preventDefault()
     var query = event.target.firstChild.children[2].value
     this.props.addQuery(query)
-    this.scrollUp()
+    // this.scrollUp()
   }
 
   scrollUp() {
