@@ -1,5 +1,4 @@
 export default function details(state = {currentVendor: {}, lengths: [], travelMode: 'DRIVING'}, action) {
-  var newState
   switch(action.type) {
     case 'ADD_CURRENT_VENDOR':
       return {...state, currentVendor: action.currentVendor}

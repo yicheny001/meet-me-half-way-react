@@ -3,8 +3,6 @@ import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 import FlatButton from 'material-ui/FlatButton';
 import SocialSentimentVerySatisfied from 'material-ui/svg-icons/social/sentiment-very-satisfied';
-import FontIcon from 'material-ui/FontIcon';
-
 import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
 
@@ -42,7 +40,7 @@ export default class DrawerSidebar extends React.Component {
         <Drawer open={this.state.open} width='350' style={styles}>
           <MenuItem onTouchTap={this.handleToggle}>x</MenuItem>
           <div className='aside'>
-            <img className="image" src="http://s9.postimg.org/k6a8x8hsf/Screen_Shot_2016_09_20_at_8_56_15_PM.png" />
+            <img className="image" role="presentation" src="http://s9.postimg.org/k6a8x8hsf/Screen_Shot_2016_09_20_at_8_56_15_PM.png" />
             <ErrorContainer />
             <FormsContainer />
             <FiltersContainer />
