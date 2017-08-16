@@ -36,7 +36,6 @@ function convertStars(rating){
 }
 
 const Vendor = ({vendor}) => {
-  debugger
   var location = vendor.location
   var rating = vendor.rating
   // var price = vendor.price.tier

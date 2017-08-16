@@ -38,7 +38,8 @@ const styles = {
   },
   label:{
     color:'#fff',
-    letterSpacing: '0.1em'
+    letterSpacing: '0.1em',
+    padding: 0
   }
 };
 
@@ -60,26 +61,24 @@ scrollUp(){
   element = document.getElementById('results')
   parent.animate({ scrollTop: element.offset().top - parent.offset().top }, { duration: 'slow', easing: 'swing'});
 
-  debugger
   document.getElementById('results').scrollIntoView({block: 'end', behavior: 'smooth'})
   setTimeout(scrollUp, 40);
 }
 
  onSubmit(data) {
    event.preventDefault()
-   var {query, limit, sortBy, openNow} = data
+   var {query, limit, sortBy, openNow } = data
+   openNow = openNow || false
    this.props.addSearch({query, limit, sortBy, openNow})
    this.scrollUp()
    this.changeCurrentVendorCss()
  }
-
 
  componentDidMount() {
    this.refs.query           // the Field
      .getRenderedComponent() // on Field, returns ReduxFormMaterialUITextField
      .getRenderedComponent() // on ReduxFormMaterialUITextField, returns TextField
  }
-
 
  render() {
    const { handleSubmit, pristine, reset, submitting } = this.props
@@ -130,10 +129,10 @@ scrollUp(){
           <Field name="openNow" elementStyle={styles.toggle} component={Toggle} label="OPEN NOW" labelPosition="right"/>
      </div>
      <br/>
-
-     <FlatButton type='submit' label="FIND PLACES!" backgroundColor={blue500} labelStyle={styles.label}	hoverColor={yellow200} /> &nbsp; &nbsp; &nbsp;
-     <FlatButton onClick={reset} label="CLEAR FORM" backgroundColor={yellow600} labelStyle={styles.label}	hoverColor={blue200} />
-
+     <div id='button-wrapper'>
+      <FlatButton className='submit-button' type='submit' label="FIND PLACES!" backgroundColor={blue500} labelStyle={styles.label}	hoverColor={yellow200} /> &nbsp; &nbsp; &nbsp;
+      <FlatButton className='clear-button' onClick={reset} label="CLEAR FORM" backgroundColor={yellow600} labelStyle={styles.label}	hoverColor={blue200} />
+      </div>
    </form>
    )
  }

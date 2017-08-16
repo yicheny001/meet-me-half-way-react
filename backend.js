@@ -1,3 +1,4 @@
+require('dotenv').config();
 var axios = require('axios')
 var CircularJSON = require('circular-json')
 var express = require('express')
@@ -19,7 +20,10 @@ app.get('/heycutie/:query/:lat/:lng/:radius/:limit/:sortBy/:openNow', function (
   var sort = req.params.sortBy
   var limit = req.params.limit
   var openNow = req.params.openNow
-  axios.get(`https://api.foursquare.com/v2/venues/explore?client_id=BHEG2XXZ2ZHKVQQAT1ZOJTF1GZX2VF1HLDNPWWBZJLDNMUDN&client_secret=4MOFLTHLVYDX1BZCMRPD2250EAZWIPBXQJT5ZREZANUGWGSJ&v=20130815&ll=${ll}&query=${query}&limit=${limit}&openNow=${openNow}`)
+  var { client_id, client_secret, version_number } = process.env
+  const requestUrl = `https://api.foursquare.com/v2/venues/explore?client_id=${client_id}&client_secret=${client_secret}&v=${version_number}&ll=${ll}&query=${query}&limit=${limit}&openNow=${openNow}`
+
+  axios.get(requestUrl)
   .then(function (data) {
     var stringifiedData = CircularJSON.stringify(data)
     res.json(stringifiedData);

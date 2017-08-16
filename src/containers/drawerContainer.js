@@ -41,7 +41,7 @@ export default class DrawerSidebar extends React.Component {
         />
         <Drawer
         open={this.state.open}
-        width='350'
+        width={350}
         style={styles}>
         <MenuItem onTouchTap={this.handleToggle}>x</MenuItem>
         <div className='aside'>
